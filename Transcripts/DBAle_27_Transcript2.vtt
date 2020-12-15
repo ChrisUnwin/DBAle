@@ -1,0 +1,886 @@
+WEBVTT
+
+1
+00:00:00.719 --> 00:00:06.150
+Chris Kerswell: Hmm database package is the required setting. Do you remember to your database package.
+
+2
+00:00:06.839 --> 00:00:21.090
+Chris Unwin (He/Him): Yes. So if we actually click on the little ellipses for this agent job. So we've, we've got to perform creates that so the display name to perform create the operation is create the database release artifacts and then we've got to pick a
+
+3
+00:00:21.570 --> 00:00:29.490
+Chris Kerswell: They want to just create a database really smart fact or do we want to create and release that those post release. Well, we want to create and release. But if we do the create
+
+4
+00:00:29.490 --> 00:00:34.110
+Chris Unwin (He/Him): First, we can then clone the step which will retain any of the settings that we put into it.
+
+5
+00:00:34.530 --> 00:00:35.310
+Genius.
+
+6
+00:00:36.330 --> 00:00:48.180
+Chris Unwin (He/Him): So I'm going to pick my nougat package that's been published from that successful build and the first thing that I'm going to do is I'm actually going to take the take the number that's been pre populated day. In this case, the one I for
+
+7
+00:00:50.040 --> 00:01:07.650
+Chris Unwin (He/Him): I'm actually going to include in as your DevOps environment variable so that we always pick up the latest build for release. So that would be dollar sign open bracket build with a capital B dot build ID capital B capital I.
+
+8
+00:01:08.700 --> 00:01:09.870
+Chris Unwin (He/Him): Close, close bracket.
+
+9
+00:01:10.110 --> 00:01:22.440
+Chris Unwin (He/Him): Exactly. So now we've got system working directory DVR pipeline CI database build artifact DB L dot database dot one dot zero dot dollar sign brackets build up build ID.
+
+10
+00:01:22.890 --> 00:01:23.850
+Don't new coach.
+
+11
+00:01:25.560 --> 00:01:44.370
+Chris Unwin (He/Him): And then all we do is create an export path now because I'm doing this on a local machine. I actually have the folder to put I'm going to create a folder to put these in. So I'm going to go to see go, I've got the folder database deployment resources. I'm just going to create the
+
+12
+00:01:45.630 --> 00:01:48.600
+Chris Unwin (He/Him): I'm going to create the folder. DDL releases.
+
+13
+00:01:49.110 --> 00:01:50.520
+Chris Kerswell: For the semi colon, the middle
+
+14
+00:01:51.000 --> 00:02:00.360
+Chris Unwin (He/Him): With a set accidental semi colon in the middle. Yeah, and then put that is the export path. Now, that is where our reports are all going to go to
+
+15
+00:02:02.340 --> 00:02:22.350
+Chris Unwin (He/Him): Now, if we scroll down a bit from there in the Create step we actually need it now need to specify our server instance which for us is the default instance on this machine and then the database name that we're going to create it against is of course the DB database scroll
+
+16
+00:02:22.650 --> 00:02:26.220
+Chris Kerswell: On the right target scroll. Anyway, it's
+
+17
+00:02:26.250 --> 00:02:29.760
+Chris Unwin (He/Him): The DBS database underscore testing.
+
+18
+00:02:34.500 --> 00:02:46.920
+Chris Unwin (He/Him): Testing. So I specify that as my target database name pick the relevant authentication method and then do something very clever, right click on the PErforM create task and clone it
+
+19
+00:02:47.880 --> 00:02:49.470
+Chris Kerswell: To do that, yes.
+
+20
+00:02:49.680 --> 00:02:53.070
+Chris Unwin (He/Him): So now we're going to call this one release release.
+
+21
+00:02:57.480 --> 00:03:01.980
+Chris Unwin (He/Him): And we're going to deploy database changes from a release artifact.
+
+22
+00:03:02.190 --> 00:03:13.050
+Chris Kerswell: So just to be clear what we've just done then with the performed create is that we have created the change group itself and then release release is going to actually deploy the transcript.
+
+23
+00:03:13.740 --> 00:03:18.960
+Chris Unwin (He/Him): Exactly. So I've specified the operation deploy database changes from release artifacts.
+
+24
+00:03:19.320 --> 00:03:34.830
+Chris Unwin (He/Him): And I've added my DVD releases our resources parts. That's going to check their with the upended by environment name for this particular release. And then, as you'll notice it's copied in my sequel server instance. So I don't need to type it out again.
+
+25
+00:03:35.190 --> 00:03:35.910
+Chris Kerswell: JS.
+
+26
+00:03:36.780 --> 00:03:39.690
+Chris Unwin (He/Him): And we're going to hit save. OK.
+
+27
+00:03:40.890 --> 00:03:55.680
+Chris Unwin (He/Him): And now we're actually good to cue a release. So if I hit Create release testing I specify which version I would like the most recent one. We have hit Create and that's now going to cue the release for me.
+
+28
+00:03:57.570 --> 00:04:06.570
+Chris Unwin (He/Him): Now the problem is with this release. If we jump back into as your DevOps pipelines releases, we should see that that release has kicked off successfully.
+
+29
+00:04:07.350 --> 00:04:19.800
+Chris Unwin (He/Him): And it's downloaded the new get package from the previous build stage and it's going to open it up and it's going to do a comparison against the target environment, create our release artifacts and then go ahead and deploy those
+
+30
+00:04:21.030 --> 00:04:21.240
+Chris Unwin (He/Him): Now,
+
+31
+00:04:21.570 --> 00:04:21.840
+So,
+
+32
+00:04:23.010 --> 00:04:32.070
+Chris Unwin (He/Him): Well, the two we have two problems. Number one, I didn't put a manual intervention step in that some people would like
+
+33
+00:04:32.610 --> 00:04:48.000
+Chris Unwin (He/Him): A manual intervention steps so they can see the changes prior to the deployment. Now if you want to do that in as your DevOps then include an agent this task in the middle between the Create artifact and release from release artifact.
+
+34
+00:04:49.650 --> 00:05:01.830
+Chris Unwin (He/Him): And that will allow you to review the reports prior to the deployment. The second problem is when you, when the first time you do a sequel change automation release you won't actually generate any
+
+35
+00:05:03.510 --> 00:05:16.890
+Chris Unwin (He/Him): Any decent reports so won't deploy it won't create a deployment preview. And the reason for this is that the schema snapshot and migration LOCK TABLES are created by this
+
+36
+00:05:17.160 --> 00:05:17.340
+Is
+
+37
+00:05:18.690 --> 00:05:19.230
+Chris Unwin (He/Him): The first
+
+38
+00:05:19.770 --> 00:05:21.270
+Chris Kerswell: Version of it for that to happen.
+
+39
+00:05:21.480 --> 00:05:32.430
+Chris Unwin (He/Him): Yes. So that's why I wouldn't advocate, including changes in the pipeline, like we did prior to your first deployment. Let it see that there are no changes to deploy.
+
+40
+00:05:33.720 --> 00:05:41.010
+Chris Unwin (He/Him): Create the migration log table create the schema snapshot table deploys successfully and then start including or changes.
+
+41
+00:05:41.490 --> 00:05:43.890
+Chris Kerswell: But we're creating to everything so that all one what
+
+42
+00:05:43.920 --> 00:05:49.500
+Chris Unwin (He/Him): Everything is green text, everything's deployed. So let's just very quickly run a very quick change through
+
+43
+00:05:49.740 --> 00:06:01.770
+Chris Unwin (He/Him): Now one thing I'm going to do before. That is, I'm going to jump back to my build and I'm going to edit my build and go to triggers and I'm going to set my continuous integration setting as well.
+
+44
+00:06:02.400 --> 00:06:18.510
+Chris Unwin (He/Him): Now if I enable continuous integration, every time I pushed directly to master or change branch merge pull requests, etc. That's going to trigger a build, which is then in turn going to trigger a deployment. So I've got my automated CIC D stages included
+
+45
+00:06:18.870 --> 00:06:25.950
+Chris Kerswell: Quick correction I Chris, I believe you have to also enable it for pull requests. So you have to hit the checkbox. First we have done that.
+
+46
+00:06:26.910 --> 00:06:31.800
+Chris Unwin (He/Him): No, no, that's only if you want to build your pull requests when they're created. It's a pull request workflow.
+
+47
+00:06:33.450 --> 00:06:37.380
+Chris Unwin (He/Him): If we merge our pull requests, because that creates activity on master.
+
+48
+00:06:37.410 --> 00:06:40.020
+Chris Kerswell: That will then trigger a car. Right, right.
+
+49
+00:06:40.860 --> 00:06:50.220
+Chris Unwin (He/Him): So in we're back in Management Studio with back and change automation and what I'm going to do is I'm going to very quickly create a branch now in the version controls.
+
+50
+00:06:50.760 --> 00:06:58.260
+Chris Unwin (He/Him): In the version control tab of change automation. If you go to the branch next poll. You can then create your brand. So I'm going to go with
+
+51
+00:06:59.580 --> 00:07:02.760
+Chris Unwin (He/Him): Feature. Feature one create the new branch.
+
+52
+00:07:06.930 --> 00:07:10.380
+Chris Unwin (He/Him): Which hopefully should be all well in the world.
+
+53
+00:07:13.320 --> 00:07:14.010
+Chris Unwin (He/Him): For today's is
+
+54
+00:07:15.510 --> 00:07:23.580
+Chris Unwin (He/Him): Because that's obviously a clone of master. So I'm going to go ahead and make one additional change. So let's add a stored procedure for instance.
+
+55
+00:07:25.110 --> 00:07:32.520
+Chris Unwin (He/Him): So I'm going to use sequel prompt. To do this, and we're going to call it gets to customers. In fact, we'll call it get customer
+
+56
+00:07:34.260 --> 00:07:38.160
+Chris Kerswell: Clarity schema name of a stylist or procedure. It's terrible.
+
+57
+00:07:38.640 --> 00:07:44.040
+Chris Unwin (He/Him): Oh, it's fine. So CREATE PROCEDURE get customers select and then will I will at least get rid of the asterisk.
+
+58
+00:07:45.420 --> 00:07:47.460
+Chris Unwin (He/Him): So we've now got a column.
+
+59
+00:07:48.660 --> 00:07:50.430
+Chris Kerswell: Declare parameters like to use their
+
+60
+00:07:50.730 --> 00:07:52.170
+Chris Unwin (He/Him): Press well
+
+61
+00:07:52.470 --> 00:07:55.140
+Chris Unwin (He/Him): That will be picked up by change automation in the reports.
+
+62
+00:07:56.160 --> 00:07:57.360
+Chris Unwin (He/Him): leave that there for now.
+
+63
+00:07:58.170 --> 00:08:02.100
+Chris Unwin (He/Him): I'm gonna run that procedure. So now we've got our procedure get customer
+
+64
+00:08:03.060 --> 00:08:07.500
+Chris Kerswell: As everyone knows, you shouldn't fix and development. What's going to be picked up by operations later.
+
+65
+00:08:08.700 --> 00:08:19.800
+Chris Unwin (He/Him): Of course I I have now made the conscious decision to ignore that advice. So if the static code analysis is telling me that I should do something I should probably do it. You're right. But for now, I'm going to leave it.
+
+66
+00:08:21.510 --> 00:08:29.700
+Chris Unwin (He/Him): So I think I've created get customer. I'm going to generate the migration for this of course it's a programmable object. So we don't have an actual migration script.
+
+67
+00:08:30.930 --> 00:08:45.540
+Chris Kerswell: Interesting to note, we generally tend to see that about 80% of changes, speaking very generally here of work changes done to databases are done to store procedures, specifically
+
+68
+00:08:46.770 --> 00:08:54.930
+Chris Kerswell: A lot less is table changes which makes a lot of sense when you think about it, but most people just tend to assume that database changes means adding creating new columns.
+
+69
+00:08:55.500 --> 00:09:04.980
+Chris Kerswell: But reality is sprocket is that the vast majority of the work. And so actually we have an option here that's enabled by default, you don't have to have it enabled by default.
+
+70
+00:09:05.340 --> 00:09:16.800
+Chris Kerswell: Which is to separate Sprott out and functions and views but sprocket is the main reason for this. And so you don't actually create a migration script. When you create or modify sprocket
+
+71
+00:09:17.280 --> 00:09:25.170
+Chris Kerswell: Instead, you actually modify that in the old state based way and we can see that Chris has writing another bad commit message.
+
+72
+00:09:25.950 --> 00:09:27.690
+Chris Unwin (He/Him): And I presented it says commit
+
+73
+00:09:27.840 --> 00:09:38.010
+Chris Unwin (He/Him): Yes. And I've hit commit and push to feature Phaedra one which has created the upstream for this particular branch and I'm going to jump over into my
+
+74
+00:09:38.580 --> 00:09:44.400
+Chris Unwin (He/Him): Feature into my pull request. Sorry. And I'm going to create a pull request for Feature. Feature oh one.
+
+75
+00:09:44.790 --> 00:09:53.310
+Chris Unwin (He/Him): There it is. There's my commit smiley face. I would highly recommend just check out the YouTube video. If nothing else, just for this commit message with the smiley face.
+
+76
+00:09:54.120 --> 00:10:12.510
+Chris Unwin (He/Him): And once we've created the pull request. Thankfully, as your DevOps picks that up automatically for us. I then hit commit approve and I can complete that as well. And that's going to delete the Feature. Feature oh one branch. Once I've merged the pull request back into our master branch.
+
+77
+00:10:14.640 --> 00:10:23.070
+Chris Unwin (He/Him): Now as soon as that merge has completed, we should be able to jump back into our repo and see those updated files.
+
+78
+00:10:25.740 --> 00:10:26.280
+I play
+
+79
+00:10:27.570 --> 00:10:46.440
+Chris Unwin (He/Him): Oh programmable objects. There it is. Get customer dot SQL. And that, in turn, once we jump from files in repose to our pipeline should indeed inform us that build in this case 105 has been cured and we've got our merged pull request number one to commit
+
+80
+00:10:47.610 --> 00:10:55.980
+Chris Unwin (He/Him): And as you see that has successfully built our change automation projects that's gone straight through the build process and published our artifacts.
+
+81
+00:10:57.600 --> 00:11:03.210
+Chris Unwin (He/Him): Which has then in turn cute, the continuous delivery of that change to our testing environment.
+
+82
+00:11:07.260 --> 00:11:23.670
+Chris Unwin (He/Him): And in just a couple of seconds that will then be deployed to the testing environment and we can for those of you who have tuned in and who are watching us then if we jump back into our DVR releases. We've got released to now.
+
+83
+00:11:24.720 --> 00:11:29.430
+Chris Unwin (He/Him): And if we take a look at the reports we should see they get customer stored procedure.
+
+84
+00:11:30.210 --> 00:11:31.470
+Chris Unwin (He/Him): That's been created in the
+
+85
+00:11:31.500 --> 00:11:40.950
+Chris Unwin (He/Him): Database deployment resources folder we specified in the release. We can see the full square, we can see any comparison warnings any code issues.
+
+86
+00:11:42.030 --> 00:11:42.900
+Chris Kerswell: For example,
+
+87
+00:11:43.440 --> 00:11:44.160
+Parameter
+
+88
+00:11:46.110 --> 00:11:46.590
+Chris Kerswell: Change.
+
+89
+00:11:46.620 --> 00:11:47.730
+Chris Unwin (He/Him): Yes, I know.
+
+90
+00:11:47.790 --> 00:11:54.270
+Chris Unwin (He/Him): I know, but then it finally we jump over into Management Studio and refresh our databases.
+
+91
+00:11:55.350 --> 00:12:10.470
+Chris Unwin (He/Him): I should now be able to jump back into my testing environment, which is somewhere. There it is. And if we take a look at tables at customer will see that we've got the date of birth column has been automatically deployed in the previous release.
+
+92
+00:12:10.890 --> 00:12:16.890
+Chris Unwin (He/Him): And then, of course, if we take a look at the stored procedures. Our get customer store procedure is there as well.
+
+93
+00:12:17.520 --> 00:12:18.300
+Chris Kerswell: Very cool.
+
+94
+00:12:18.390 --> 00:12:31.830
+Chris Unwin (He/Him): Thanks, Chris. That's, that's my pleasure. Thank you. And that was an end to end pipeline. I say, end to end, we of course need to add additional steps for deploying to other environments and it can be way more complex as well. We can add
+
+95
+00:12:32.370 --> 00:12:35.700
+Chris Kerswell: More data around the press wants. If you want data in there.
+
+96
+00:12:36.360 --> 00:12:43.080
+Chris Unwin (He/Him): Well, of course we can include clones, and we can deploy to clones where we've got realistic environments we can test against
+
+97
+00:12:43.350 --> 00:12:52.920
+Chris Unwin (He/Him): If we want to include static data, we just use the Data tab and change automation. We can do pull request validation. We can do X, Y and Zed. There's tons of stuff we can do
+
+98
+00:12:53.400 --> 00:12:54.720
+Chris Kerswell: We can do all the things
+
+99
+00:12:54.960 --> 00:12:57.180
+Chris Unwin (He/Him): But what we've been able to do. Thanks to
+
+100
+00:12:59.400 --> 00:13:05.430
+Chris Unwin (He/Him): Toes and of course as your DevOps. We've been able to deploy our change upstream and that's what matters.
+
+101
+00:13:05.580 --> 00:13:06.930
+Chris Kerswell: And climb, climb.
+
+102
+00:13:07.380 --> 00:13:10.230
+Chris Unwin (He/Him): Oh, yeah. And of course, I wouldn't have been anywhere without cloud.
+
+103
+00:13:12.210 --> 00:13:19.920
+Chris Unwin (He/Him): So that's amazing that we've managed to set up a full end to end build and deployment pipeline in what, an hour.
+
+104
+00:13:20.460 --> 00:13:21.600
+Chris Unwin (He/Him): Yeah, so that's pretty good.
+
+105
+00:13:22.080 --> 00:13:25.350
+Chris Kerswell: And that was with a lot of overexplaining as well and
+
+106
+00:13:25.380 --> 00:13:27.720
+Chris Kerswell: If you don't even use Yammer, to make it even more efficient.
+
+107
+00:13:29.370 --> 00:13:39.120
+Chris Unwin (He/Him): Yes, this is true. I could have used Jamel. I'm not sure that people like Kendra little will agree with you that jamo makes you more efficient, but it certainly I think helps with something
+
+108
+00:13:39.420 --> 00:13:45.570
+Chris Kerswell: I mean, for some you have your first pipeline, probably not something of your second, third, fourth, and fifth then almost certainly yes
+
+109
+00:13:45.810 --> 00:13:54.750
+Chris Unwin (He/Him): Exactly. So we've talked for an hour and 10 minutes. Apologies to everyone that we've talked so much. We really enjoy talking
+
+110
+00:13:54.750 --> 00:13:55.650
+Chris Kerswell: About stuff.
+
+111
+00:13:55.710 --> 00:13:58.920
+Chris Unwin (He/Him): But we've got an end to end pipeline that's what matters and that
+
+112
+00:13:58.980 --> 00:14:06.090
+Chris Unwin (He/Him): Is of course the delivery of our gifts down the chimney down the pipeline to test to prod and beyond.
+
+113
+00:14:06.330 --> 00:14:14.880
+Chris Kerswell: So Santa is missing a trick. If he hosts everyone on a zoom call and delivers presence. This way, doesn't need fly around the world.
+
+114
+00:14:15.360 --> 00:14:16.920
+Chris Unwin (He/Him): Exactly bish bash bosh
+
+115
+00:14:17.100 --> 00:14:18.600
+Chris Kerswell: Yeah, yeah. Miles so
+
+116
+00:14:19.710 --> 00:14:22.440
+Chris Unwin (He/Him): I can 14.6 million
+
+117
+00:14:23.700 --> 00:14:30.600
+Chris Unwin (He/Him): That's exactly how many miles Santa would have to travel to get round the to get around every house to deliver presidents.
+
+118
+00:14:31.200 --> 00:14:32.790
+Chris Kerswell: And I love that.
+
+119
+00:14:33.180 --> 00:14:35.130
+Chris Unwin (He/Him): 14.665 I believe
+
+120
+00:14:37.350 --> 00:14:40.410
+Chris Kerswell: Now they've worked that out. Anyway, that's a question for another time.
+
+121
+00:14:40.800 --> 00:14:49.080
+Chris Unwin (He/Him): It is a question for another time. So it's time for us to move on, of course, to our final the beloved section and that of course is the
+
+122
+00:14:50.340 --> 00:14:51.000
+Chris Unwin (He/Him): New
+
+123
+00:14:53.430 --> 00:14:55.080
+Chris Unwin (He/Him): Wow, that was deep, deep
+
+124
+00:15:03.150 --> 00:15:05.100
+Chris Kerswell: How's beautiful. Thanks.
+
+125
+00:15:06.420 --> 00:15:23.790
+Chris Unwin (He/Him): So we didn't really have too much to talk about today. We don't really have data breach monthly to talk about. We've got a couple of bits. So first things first. I just want to say the DBS competition is still running and will be running up until the first of January 2020
+
+126
+00:15:25.050 --> 00:15:41.400
+Chris Unwin (He/Him): And that is our Christmas competition to win a crate of beer of your choice of festive crate of beer or alcoholic non alcoholic drink of an equivalent value of your choice. We don't care. We'll figure it out but Chris, how do people enter that competition.
+
+127
+00:15:41.850 --> 00:15:45.090
+Chris Kerswell: Email in that ddl@red.com
+
+128
+00:15:45.630 --> 00:15:46.920
+Chris Unwin (He/Him): And what do they have to tell us
+
+129
+00:15:47.430 --> 00:15:48.750
+Chris Kerswell: What their favorite beer is
+
+130
+00:15:49.110 --> 00:15:50.040
+Chris Unwin (He/Him): And what else
+
+131
+00:15:51.060 --> 00:15:52.770
+Chris Kerswell: That's the only parent. I really care about.
+
+132
+00:15:53.010 --> 00:15:53.760
+Chris Unwin (He/Him): Okay, fair enough.
+
+133
+00:15:54.060 --> 00:16:07.860
+Chris Kerswell: Let me details will be also pretty good as well. If there's any feedback you have for us, then that's something that we really appreciate and as we spoke on the last episode is a present back
+
+134
+00:16:08.940 --> 00:16:09.720
+Chris Kerswell: Exactly.
+
+135
+00:16:09.900 --> 00:16:16.170
+Chris Unwin (He/Him): So yeah, we only actually need one thing for you to enter the competition and that is your favorite beer.
+
+136
+00:16:17.490 --> 00:16:17.970
+Chris Unwin (He/Him): Beyond
+
+137
+00:16:19.200 --> 00:16:21.420
+Chris Unwin (He/Him): No, not your favorite beer, the listeners favorite beer.
+
+138
+00:16:22.200 --> 00:16:24.960
+Chris Kerswell: Guess Chris's favorite beer new competition for next year.
+
+139
+00:16:25.380 --> 00:16:26.640
+Chris Unwin (He/Him): Indeed, but
+
+140
+00:16:27.270 --> 00:16:29.910
+Chris Kerswell: Is this is the magic happening live on air.
+
+141
+00:16:30.660 --> 00:16:42.660
+Chris Unwin (He/Him): But of course, if you also wanted to include any feedback or any topics you'd like us to talk about or anything like that, please do feel free to that's de B ale at Red hyphen gate.com
+
+142
+00:16:44.100 --> 00:16:44.610
+Chris Kerswell: Ballet.
+
+143
+00:16:45.480 --> 00:16:45.690
+Or
+
+144
+00:16:47.670 --> 00:16:58.050
+Chris Unwin (He/Him): There are two other bits of news from me and that of course is number one, the red gate state of database DevOps report is still running. If you want to be in with a chance of winning a rather cracking.
+
+145
+00:16:58.320 --> 00:17:12.900
+Chris Unwin (He/Him): Amazon voucher which I think is worth quite a lot of money, then do go ahead and check that out. And of course, the other thing is that DB L is about to break 10,000 listens.
+
+146
+00:17:13.320 --> 00:17:13.980
+Chris Kerswell: That's the big one.
+
+147
+00:17:14.400 --> 00:17:16.020
+Chris Unwin (He/Him): That's the big one. I'm
+
+148
+00:17:16.770 --> 00:17:18.510
+Chris Kerswell: Gonna throw numbers, though.
+
+149
+00:17:19.020 --> 00:17:21.570
+Chris Kerswell: All of our listeners watch the video instead
+
+150
+00:17:25.980 --> 00:17:29.790
+Chris Unwin (He/Him): Figure it out. We'll add them will add them together. There's two numbers. It's not hard to add them.
+
+151
+00:17:29.820 --> 00:17:33.060
+Chris Unwin (He/Him): I'm sure we can do, you've got you've got a degree in math. We'll figure it out.
+
+152
+00:17:33.660 --> 00:17:35.760
+Chris Kerswell: The calculator calculator.
+
+153
+00:17:36.330 --> 00:17:43.500
+Chris Unwin (He/Him): And we'll figure it out. But we just wanted to take the opportunity to say thank you so much to everyone who listens and watches in this case.
+
+154
+00:17:44.130 --> 00:17:59.400
+Chris Unwin (He/Him): We couldn't do this without you. We love doing DBS and it's nice that red gate invest in us like this as well for Chris and producer Louise who we are forever grateful to as well who, without whom this couldn't be possible.
+
+155
+00:18:00.390 --> 00:18:09.690
+Chris Unwin (He/Him): You know Chris and I, by and large, pay for our own beer, you know we we spend a lot of time recording DDL talking
+
+156
+00:18:10.080 --> 00:18:12.420
+Chris Kerswell: Most people post their own beer. I don't know about.
+
+157
+00:18:12.720 --> 00:18:15.120
+Chris Unwin (He/Him): Yeah, but it's not like we expensive or anything.
+
+158
+00:18:15.360 --> 00:18:21.000
+Chris Unwin (He/Him): But you know we we work hard on this podcast we edit it, we
+
+159
+00:18:21.300 --> 00:18:24.960
+Chris Kerswell: Work hard on this podcast, I'm mostly a passenger for
+
+160
+00:18:24.960 --> 00:18:35.910
+Chris Unwin (He/Him): Almost everything is done by the three of us that's myself Chris and Louise and massive thank you to Louise for always being there with us and for us and massive thank you to you all.
+
+161
+00:18:36.600 --> 00:18:46.320
+Chris Unwin (He/Him): For being there with us as well. So here's to the next 10,000 listens. Here's the next 27 episodes 27, of course, being my actually being my lucky number as well.
+
+162
+00:18:46.350 --> 00:18:48.030
+Chris Kerswell: Given the very top is your lucky number
+
+163
+00:18:48.270 --> 00:18:57.000
+Chris Unwin (He/Him): Well, I was married on the 27th at Twitter at the age of 27 27th of April to my wonderful wife.
+
+164
+00:18:58.110 --> 00:19:05.460
+Chris Unwin (He/Him): And it's like, yeah, I don't know, I feel like 27th, a bit of a magical number so kind of fitting that it falls in on the on the seasonal episode.
+
+165
+00:19:06.300 --> 00:19:06.870
+Chris Kerswell: My nose.
+
+166
+00:19:07.350 --> 00:19:08.310
+Chris Unwin (He/Him): Was your lucky number
+
+167
+00:19:11.970 --> 00:19:15.600
+Chris Kerswell: My lucky number in isn't it in China is quite a lucky number
+
+168
+00:19:16.050 --> 00:19:17.250
+Chris Unwin (He/Him): Yeah yeah
+
+169
+00:19:17.580 --> 00:19:20.040
+Chris Kerswell: The number plate that just has eight is really valuable. They're
+
+170
+00:19:21.090 --> 00:19:21.600
+Chris Unwin (He/Him): Amazing.
+
+171
+00:19:22.650 --> 00:19:29.940
+Chris Unwin (He/Him): There is, there is still a couple of bits of news though, isn't that. So Chris, what, what news is that
+
+172
+00:19:30.270 --> 00:19:44.040
+Chris Kerswell: I guess in terms of big industry or community news that the large ONE OF THE DAY AS WELL. THE LAST ONE OF THE WEEKEND has been a quite a data breach, but a significant
+
+173
+00:19:44.340 --> 00:19:48.150
+Chris Kerswell: security breaches security breach. Yeah, which is
+
+174
+00:19:49.980 --> 00:19:59.610
+Chris Kerswell: Don't really know how to term it like it. So essentially, a company called fire I based in the US. So if you not heard a fire I before
+
+175
+00:20:00.450 --> 00:20:21.270
+Chris Kerswell: The pretty substantial company they offer security software but they detected that someone was using some of the technology in some US Federal organizations maliciously I think specifically, they noticed that emails were being monitored.
+
+176
+00:20:22.620 --> 00:20:25.470
+Chris Kerswell: So they report on this on the eighth of December.
+
+177
+00:20:26.520 --> 00:20:44.580
+Chris Kerswell: That this had happened. They weren't quite sure how this had happened yet, but continued having a look to try and figure out what was going on. They released another statement on the 11th of December. So a few days later. So specifically, what has happened here is that there's been a malicious
+
+178
+00:20:45.720 --> 00:20:53.760
+Chris Kerswell: Bit of code put into a third party monitoring platform. So specifically, that is solar winds Orion platform.
+
+179
+00:20:55.110 --> 00:20:58.800
+Chris Kerswell: That is, you know, it's hugely popular product right so
+
+180
+00:20:58.860 --> 00:21:09.750
+Chris Kerswell: It's absolutely send a lot of places and a lot of federal government organizations. And so when that update has rolled out from solar winds that has been deployed out
+
+181
+00:21:10.290 --> 00:21:22.980
+Chris Kerswell: Into those organizations. Yeah. Specifically, I have heard the term a supply chain compromise. Yeah, Chris. If you were to describe briefly a supply chain compromise. How would you describe it.
+
+182
+00:21:23.400 --> 00:21:38.040
+Chris Unwin (He/Him): Sure. So a supply chain attack is a as an increasingly popular style of software attack whereby you manage to implant malicious code into the software development lifecycle.
+
+183
+00:21:38.790 --> 00:21:48.240
+Chris Unwin (He/Him): To effectively allow it to be distributed and pretend that it's part of the vendors code. So I think the Microsoft example walks you through
+
+184
+00:21:48.720 --> 00:21:54.480
+Chris Unwin (He/Him): Effectively, if you have a server that's connected to buy your application that's delivered by the vendor.
+
+185
+00:21:54.750 --> 00:22:02.490
+Chris Unwin (He/Him): If you're in some way able to modify a small bit of that code and to clone that particular server, and then pretend you are that server.
+
+186
+00:22:02.910 --> 00:22:15.900
+Chris Unwin (He/Him): Then that allows you to potentially propagate that nefarious code to anyone using that server, which of course could grow exponentially based on the supply chain right is vendor to vendor to vendor potentially
+
+187
+00:22:17.160 --> 00:22:26.340
+Chris Unwin (He/Him): And what that means is that you're able to build in a very small, very difficult to find exploit and that in turn propagates to multiple
+
+188
+00:22:27.630 --> 00:22:34.890
+Chris Unwin (He/Him): To multiple clients multiple customers multiple sites and in this case was just that and nefarious
+
+189
+00:22:35.400 --> 00:22:49.350
+Chris Unwin (He/Him): DLL that was that ended up being distributed and running kind of just before the rest of the solar winds package, which of course is regular behavior for some startup DLL so it's really difficult to detect these sorts of things.
+
+190
+00:22:49.980 --> 00:23:02.910
+Chris Unwin (He/Him): Windows Defender actually does does pick up some of these things in the most recent updates, but it's it's like solo in said in their press release. It's an incredibly
+
+191
+00:23:03.420 --> 00:23:18.330
+Chris Unwin (He/Him): Complex incredibly well thought out sophisticated attack and, you know, you've really got a feel for for soda wins as well because, you know, this could have happened to anyone. And unfortunately, it's just it's happened to them.
+
+192
+00:23:18.840 --> 00:23:20.460
+Chris Kerswell: Yeah, it's, uh, yeah.
+
+193
+00:23:21.660 --> 00:23:31.110
+Chris Kerswell: So the 13th of December, as well. So on the timeline, we've had an announcement that from the US government and emergency directive.
+
+194
+00:23:31.560 --> 00:23:43.140
+Chris Kerswell: Instructing organizations, how to respond to this. So it's, you know, this, this is a very big deal expect a lot of people are probably already aware of this, but yeah, could be echoing what Chris said
+
+195
+00:23:44.700 --> 00:23:56.910
+Chris Kerswell: Your solar winds themselves have released a statement saying that they have released an update that should patch this this was, as you said, though it was
+
+196
+00:23:57.690 --> 00:24:09.720
+Chris Kerswell: A very well thought out attack it has started at the start of this year and it's taking this long to be detected yes i somewhere between March and June 2022 at the store.
+
+197
+00:24:10.980 --> 00:24:20.700
+Chris Kerswell: And yeah, and the US government. I presume or believe I've rights on whether they're treating it as a attack from a
+
+198
+00:24:21.870 --> 00:24:25.980
+Chris Kerswell: While another nation mostly unlikely Russia.
+
+199
+00:24:26.460 --> 00:24:36.450
+Chris Unwin (He/Him): I believe that's what they've what they've estimated. Yeah, it's, it's, you know, it's a it's a ridiculous situation that we find ourselves in that you know enterprises are under attack like this where
+
+200
+00:24:36.840 --> 00:24:48.120
+Chris Unwin (He/Him): You know, in 2020 people are still out to you know to attack others, but I think that I can safely speak for the two of us when I say that, you know, our thoughts go out
+
+201
+00:24:48.780 --> 00:25:00.210
+Chris Unwin (He/Him): To obviously everyone at solar winds and all the security teams who are working to identify and to patch this problem. And obviously we hope for a swift and timely resolution.
+
+202
+00:25:00.900 --> 00:25:01.950
+Chris Kerswell: Yep, absolutely.
+
+203
+00:25:03.870 --> 00:25:05.610
+Chris Unwin (He/Him): Fantastic. Okay, well, it
+
+204
+00:25:07.110 --> 00:25:15.750
+Chris Unwin (He/Him): Is a somber note, but at the end of the day it's big news and it should be covered. Um, but, you know, it's not pleasant news. That being said,
+
+205
+00:25:16.680 --> 00:25:35.310
+Chris Unwin (He/Him): Obviously we've got a nice mixture of news there for you. And we are well in advance. So this is really the the DB L bumper special for Christmas in that we're almost double the amount of time we normally spend talking about. It's been an absolute pleasure as always, Mr Chris Caswell
+
+206
+00:25:35.790 --> 00:25:38.040
+Chris Kerswell: Now swear that as, as we've got on and
+
+207
+00:25:38.160 --> 00:25:45.900
+Chris Kerswell: Be more expensive. This the length of the episodes. We've got longer and longer and longer and the amount of valuable content. It's got smaller and smaller and smaller as
+
+208
+00:25:46.890 --> 00:25:47.550
+Chris Kerswell: A true
+
+209
+00:25:47.940 --> 00:25:51.210
+Chris Kerswell: Like testament to our ability as podcast hosts.
+
+210
+00:25:51.330 --> 00:25:52.470
+Chris Unwin (He/Him): To talk rubbish.
+
+211
+00:25:52.560 --> 00:25:53.400
+Chris Kerswell: At exactly
+
+212
+00:25:53.790 --> 00:25:57.900
+Chris Unwin (He/Him): Exactly. Brilliant. Well, in that case, then I didn't have anything else to add, did you
+
+213
+00:25:58.680 --> 00:25:59.280
+Chris Kerswell: Have for me.
+
+214
+00:25:59.850 --> 00:26:07.770
+Chris Unwin (He/Him): Well, in that case, then if you're watching us on the YouTube machine or wherever this video ends up giving you a big old wave
+
+215
+00:26:08.550 --> 00:26:17.490
+Chris Unwin (He/Him): Of course, if you are listening to us. Thank you again for tuning in. It really is a pleasure. Thank you so much for your continued listening and please do feel free to
+
+216
+00:26:17.790 --> 00:26:28.620
+Chris Unwin (He/Him): Let us know. DDL at Red Ice and gay.com what your favorite beer is enter the competition. We look forward to seeing you in 2021 but for now it's a thank you for me.
+
+217
+00:26:29.370 --> 00:26:30.120
+Chris Kerswell: Thank you for me.
+
+218
+00:26:30.840 --> 00:26:31.650
+Chris Unwin (He/Him): And chairs.
+
+219
+00:26:32.130 --> 00:26:33.240
+Chris Kerswell: A Merry Christmas.
+
+220
+00:26:33.690 --> 00:26:35.940
+Chris Unwin (He/Him): Merry Christmas Season's Greetings, whatever.
+
+221
+00:26:36.540 --> 00:26:37.620
+Chris Unwin (He/Him): Happy holidays.
+

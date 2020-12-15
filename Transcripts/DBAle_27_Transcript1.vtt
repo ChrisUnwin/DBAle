@@ -1,0 +1,2054 @@
+WEBVTT
+
+1
+00:00:00.089 --> 00:00:01.829
+Chris Kerswell: Wait, why are you putting your camera on.
+
+2
+00:00:03.570 --> 00:00:05.190
+Chris Kerswell: Can only be through one source, I want
+
+3
+00:00:05.759 --> 00:00:11.700
+Chris Unwin (He/Him): I literally told you that I would give I would speak. I've just hit record.
+
+4
+00:00:13.259 --> 00:00:14.160
+Chris Unwin (He/Him): You are the one
+
+5
+00:00:15.240 --> 00:00:25.680
+Chris Unwin (He/Him): Anyway. Hello, everyone, and welcome to episode 27 that's right episode 27. And guess what, not only are we coming to you.
+
+6
+00:00:26.280 --> 00:00:44.940
+Chris Unwin (He/Him): From your ear holes on Spotify or an apple podcast or whatever it is that you are listening to us on but we're actually also potentially coming to you live in YouTube land, hello everyone in YouTube land who can see us. We are Chris. My name is Chris
+
+7
+00:00:45.480 --> 00:00:47.940
+Chris Kerswell: My name is also Chris probably
+
+8
+00:00:48.510 --> 00:00:56.460
+Chris Unwin (He/Him): And this is exceptionally weird because this is the first time that we've ever actually captured DB ale on video, right.
+
+9
+00:00:56.880 --> 00:00:59.040
+Chris Kerswell: Yeah, talk about face for radio
+
+10
+00:00:59.580 --> 00:01:02.610
+Chris Kerswell: And yeah, after all of that. Pooh poohing about my
+
+11
+00:01:02.610 --> 00:01:10.470
+Chris Kerswell: Premium DDL idea. Now, look who's laughing. Sometimes it is a benefit to be the boss.
+
+12
+00:01:10.920 --> 00:01:19.770
+Chris Unwin (He/Him): Is it me because is it me the one who's laughing because I'm done with this fancy setup that can make us swap between different scenes as and when I like
+
+13
+00:01:20.190 --> 00:01:21.180
+Chris Kerswell: Oh, yeah.
+
+14
+00:01:21.300 --> 00:01:35.010
+Chris Unwin (He/Him): Oh yeah, well, Chris. Obviously, we're going to be doing a lot of very cool, very fancy things today we're gonna be talking about a lot of very cool, very fancy things and a couple of them. Not so cool things as well. But there you go.
+
+15
+00:01:35.520 --> 00:01:46.440
+Chris Unwin (He/Him): We do have which is quite exciting, though, because today is the last DDL of 2020 this horrendous year
+
+16
+00:01:46.770 --> 00:01:47.310
+Chris Kerswell: Yeah, that
+
+17
+00:01:47.880 --> 00:01:48.360
+Chris Kerswell: Have come
+
+18
+00:01:48.510 --> 00:01:49.290
+Chris Kerswell: quick enough
+
+19
+00:01:51.390 --> 00:01:59.040
+Chris Unwin (He/Him): But fortunately, we've got a bumper PACKED SHOW. SO I better actually stop stop just talking and get on with it. So,
+
+20
+00:01:59.580 --> 00:02:11.010
+Chris Unwin (He/Him): What we're doing today is we are going to set up a pipeline from beginning to end today is going to be continuous delivery with Chris. Chris and Santa.
+
+21
+00:02:11.370 --> 00:02:21.330
+Chris Unwin (He/Him): Because, much like chimneys pipelines need to have packages delivered through them and that is what we're going to be doing today we are going to be doing a live
+
+22
+00:02:21.660 --> 00:02:34.230
+Chris Unwin (He/Him): End to end database DevOps walk through pipeline setup thingy with Chris and myself. And of course, if you're following on via audio will be describing everything that we're doing. So don't be disheartened.
+
+23
+00:02:34.950 --> 00:02:48.450
+Chris Unwin (He/Him): If, of course, you wanted to swap over to YouTube now and look at our beautiful faces, then you are more than welcome to do so as well and it will be up on the red gate YouTube channel. I think probably at a similar time
+
+24
+00:02:48.810 --> 00:03:00.570
+Chris Kerswell: Yeah, if you regularly listen to us on your daily, weekly, monthly commute, then I'd really recommend only sticking to the audio video would not be a good idea.
+
+25
+00:03:01.470 --> 00:03:04.440
+Chris Unwin (He/Him): Yes, otherwise you may never listened to us again.
+
+26
+00:03:06.990 --> 00:03:08.550
+Chris Kerswell: Marshall sad indeed.
+
+27
+00:03:09.240 --> 00:03:09.990
+Chris Unwin (He/Him): Fabulous. Well,
+
+28
+00:03:10.230 --> 00:03:14.100
+Chris Kerswell: People can see our faces while they're doing this, they might also choose to never wash
+
+29
+00:03:17.820 --> 00:03:21.330
+Chris Unwin (He/Him): Your DevOps. This is much nicer looking. Are they gone other to
+
+30
+00:03:21.990 --> 00:03:25.500
+Chris Unwin (He/Him): Death. Yeah, we're like the the evil Christmas spirits in all of those
+
+31
+00:03:26.670 --> 00:03:28.890
+Chris Unwin (He/Him): All of those Christmas themed horror films.
+
+32
+00:03:28.920 --> 00:03:37.530
+Chris Kerswell: Although I think I'd quite like to be like a ghost of Christmas future from the Mickey Mouse Christmas Carol, he was called
+
+33
+00:03:38.640 --> 00:03:41.550
+Chris Kerswell: I'm thinking, I would probably cigar and as heard and
+
+34
+00:03:41.790 --> 00:03:43.110
+Chris Unwin (He/Him): Yeah, I would.
+
+35
+00:03:43.170 --> 00:03:46.380
+Chris Unwin (He/Him): Probably be more the ghost of Christmas.
+
+36
+00:03:46.440 --> 00:03:48.330
+Chris Unwin (He/Him): Present that from Scrooge.
+
+37
+00:03:50.910 --> 00:03:53.970
+Chris Unwin (He/Him): Which I think is the ferry ride with the tester.
+
+38
+00:03:54.030 --> 00:03:55.470
+Chris Kerswell: I mean, you said it, not me.
+
+39
+00:03:56.340 --> 00:04:04.890
+Chris Unwin (He/Him): It's about right. I love it. It's one of my favorite Christmas films as well. Not my actual favorite Christmas film, which of course is
+
+40
+00:04:05.130 --> 00:04:05.550
+Chris Kerswell: I had
+
+41
+00:04:06.210 --> 00:04:07.980
+Chris Unwin (He/Him): Miracle on 34th Street.
+
+42
+00:04:09.000 --> 00:04:10.320
+Chris Unwin (He/Him): The correct answer.
+
+43
+00:04:12.270 --> 00:04:13.470
+Chris Kerswell: You know, I watched recently.
+
+44
+00:04:14.040 --> 00:04:14.400
+Well,
+
+45
+00:04:15.750 --> 00:04:17.310
+Chris Kerswell: Actually, I forgot the name of it.
+
+46
+00:04:18.540 --> 00:04:28.950
+Chris Kerswell: The one way, like the the jingle of the bells and the, oh no, I can't even remember the details of it's the really famous Christmas one
+
+47
+00:04:31.410 --> 00:04:33.600
+Chris Unwin (He/Him): Every time a bell rings. An angel gets its wings.
+
+48
+00:04:33.720 --> 00:04:35.850
+Chris Unwin (He/Him): Talking about. It's a Wonderful Life.
+
+49
+00:04:36.150 --> 00:04:39.150
+Chris Unwin (He/Him): Yeah, I'm gonna die. Clarence, I want to live.
+
+50
+00:04:39.570 --> 00:04:42.420
+Chris Kerswell: Yeah. You know what that film made me realize
+
+51
+00:04:43.560 --> 00:04:47.760
+Chris Kerswell: Video or specifically film production has come a hell of a long way.
+
+52
+00:04:49.980 --> 00:04:50.490
+Chris Unwin (He/Him): has indeed.
+
+53
+00:04:50.790 --> 00:04:51.870
+Chris Unwin (He/Him): It was, you know, they know
+
+54
+00:04:54.150 --> 00:04:57.990
+Chris Unwin (He/Him): Where we are still to Bob and a shoestring oh yeah
+
+55
+00:04:58.140 --> 00:05:18.210
+Chris Unwin (He/Him): two nickels and a shoe string. I guess for non English listeners. That being said though of course people come to DDL for, for one thing, and if not the talk about databases or data breach monthly they come here to listen to what we are drinking. So Chris, what are you drinking today.
+
+56
+00:05:18.270 --> 00:05:29.400
+Chris Kerswell: I honestly have no idea where I got this from but I have something called a BK fest beer, a German beer. It has a little big description on the back in German.
+
+57
+00:05:30.420 --> 00:05:33.720
+Chris Kerswell: So yeah, who knows what it is.
+
+58
+00:05:34.020 --> 00:05:36.120
+Chris Kerswell: The crappy 6%
+
+59
+00:05:36.540 --> 00:05:38.040
+Chris Kerswell: For over 700 years
+
+60
+00:05:39.930 --> 00:05:49.800
+Chris Kerswell: disbrow was dank and then true and be a trinket is traditional I bet Saunders get hot Vols beer. The
+
+61
+00:05:51.060 --> 00:05:59.970
+Chris Kerswell: Action, bro. A bit Duncan SICK BAY, you didn't, Mitch, just some not as far as far as I can get.
+
+62
+00:06:00.180 --> 00:06:04.470
+Chris Unwin (He/Him): This is gone. Well, I think there was a couple of very good words in there, Chris.
+
+63
+00:06:06.060 --> 00:06:08.580
+Chris Kerswell: Also telling you that the zoo Totten
+
+64
+00:06:09.030 --> 00:06:12.750
+Chris Kerswell: Includes Vassar Justin melts often
+
+65
+00:06:14.070 --> 00:06:18.540
+Chris Kerswell: Which, for those of you who don't speak German is bought a barley malt and hops.
+
+66
+00:06:18.930 --> 00:06:25.260
+Chris Unwin (He/Him): Yes, because Joe to the German purity laws. You can't put anything else in beer.
+
+67
+00:06:29.370 --> 00:06:29.730
+Chris Unwin (He/Him): No, no.
+
+68
+00:06:30.720 --> 00:06:39.150
+Chris Kerswell: I think I have heard that before anxious to see what makes this a festive beer, though. Ooh fest appear. So yeah, we'll see.
+
+69
+00:06:39.690 --> 00:06:42.360
+Chris Kerswell: Is it gonna be the best tasting. I really hope not.
+
+70
+00:06:43.590 --> 00:06:46.260
+Chris Unwin (He/Him): You don't want it to taste like a mince pie or Christmas pudding.
+
+71
+00:06:46.500 --> 00:06:47.970
+Chris Kerswell: No, no, not really.
+
+72
+00:06:48.120 --> 00:06:50.010
+Chris Unwin (He/Him): I always find it attacking
+
+73
+00:06:51.030 --> 00:06:51.360
+Chris Kerswell: A bit
+
+74
+00:06:51.390 --> 00:06:52.230
+Chris Kerswell: Of a rubbish.
+
+75
+00:06:52.650 --> 00:06:53.910
+Chris Unwin (He/Him): I think tacky about
+
+76
+00:06:54.270 --> 00:06:59.970
+Chris Kerswell: A mince pie flavors like like come October, get a lot of pumpkin flavored beer and I'm just, I got rather not.
+
+77
+00:07:00.930 --> 00:07:04.140
+Chris Unwin (He/Him): I haven't seen a pumpkin flavored beer. But okay, I'll give you that one.
+
+78
+00:07:05.670 --> 00:07:16.890
+Chris Unwin (He/Him): So I, on the other hand, and drink. Drinking. Drinking I've already been drinking, apparently, and it's only half past four in the afternoon. No. Today I am drinking this
+
+79
+00:07:17.640 --> 00:07:21.660
+Chris Unwin (He/Him): What's this, this is an IBO double IPA.
+
+80
+00:07:22.290 --> 00:07:30.030
+Chris Unwin (He/Him): Now, for those of you who don't know, and that's probably most of you. Apologies for the light as well. By the way, it's darkness here. But they go
+
+81
+00:07:31.110 --> 00:07:36.390
+Chris Unwin (He/Him): For those of you who don't know, there's actually a very tiny brewery that started up to this year.
+
+82
+00:07:37.350 --> 00:07:45.840
+Chris Unwin (He/Him): In a town, not that far from where I live. And it's the Ivo brewery who are based out of submission in Cambridge share
+
+83
+00:07:46.380 --> 00:07:59.430
+Chris Unwin (He/Him): And they do some of the most fantastic beers. I have ever had. They do an American IPA, which is delicious. I think it's called she keeps it nice American IPA, really, really good.
+
+84
+00:08:00.390 --> 00:08:09.420
+Chris Unwin (He/Him): They do a tremendous Porter that Andrea loves all of my friends like the shop opens every month or so.
+
+85
+00:08:10.260 --> 00:08:14.970
+Chris Unwin (He/Him): With what beers. They have in stock and then they immediately sell out within a couple of hours.
+
+86
+00:08:15.900 --> 00:08:28.260
+Chris Unwin (He/Him): And then they hand deliver all of the beers to all of their customers within the radius that they deliver and yeah and mine were delivered on Friday and I saved this double IPA.
+
+87
+00:08:29.040 --> 00:08:40.830
+Chris Unwin (He/Him): It's also known as a better nicer and it's yeah I mean it is what it says on the on the bottle. Really, it's a mixture of different hops, and it's
+
+88
+00:08:41.400 --> 00:08:58.230
+Chris Unwin (He/Him): Vegan recyclable, all that good stuff. But yeah, they don't waste any words. There's no descriptions. It is just unabashed double IPA at 8.5% which is going to make setting up a pipeline today. Hmm. Interesting.
+
+89
+00:08:59.190 --> 00:09:04.200
+Chris Kerswell: Yeah, nothing better than drinking setting up a pipe blind.
+
+90
+00:09:05.430 --> 00:09:06.300
+Chris Unwin (He/Him): I've done it before.
+
+91
+00:09:07.410 --> 00:09:08.460
+Chris Kerswell: I'm sure you have
+
+92
+00:09:08.790 --> 00:09:09.900
+Chris Unwin (He/Him): Well, if anyone's ever
+
+93
+00:09:10.110 --> 00:09:11.430
+Chris Kerswell: heard anyone talk about that later.
+
+94
+00:09:11.820 --> 00:09:19.830
+Chris Unwin (He/Him): Well, if anyone's ever read the blog post that I did on setting up an oracle state based pipeline with is your DevOps and saw my blog.
+
+95
+00:09:20.940 --> 00:09:29.160
+Chris Unwin (He/Him): That took me probably about two and a half, three hours to figure everything out. And in that time I was driven to drink.
+
+96
+00:09:31.110 --> 00:09:32.160
+Chris Unwin (He/Him): Have a choice. I was like,
+
+97
+00:09:32.730 --> 00:09:34.860
+Chris Unwin (He/Him): There we go. Oracle state based pipelines.
+
+98
+00:09:37.320 --> 00:09:49.770
+Chris Unwin (He/Him): But on that note, let's actually get these let's get these bottles open and get this show on the proverbial road, as you can probably see and here we are not on the actual road. Here we go.
+
+99
+00:09:51.180 --> 00:09:54.720
+Chris Kerswell: All right. Ready. Yep. Give me a countdown. Oh.
+
+100
+00:09:56.100 --> 00:09:58.380
+Chris Unwin (He/Him): Wait 321
+
+101
+00:10:02.220 --> 00:10:02.640
+Chris Kerswell: Here that
+
+102
+00:10:03.450 --> 00:10:05.760
+Chris Unwin (He/Him): I was gonna say it was a little bit anticlimactic,
+
+103
+00:10:06.180 --> 00:10:11.580
+Chris Kerswell: Yeah, I have to do the poor next my headset mic as well. It's gonna look really weird.
+
+104
+00:10:12.150 --> 00:10:13.260
+Chris Unwin (He/Him): I actually don't. I
+
+105
+00:10:13.350 --> 00:10:15.000
+Chris Kerswell: Actually forgot to bring a glass with me.
+
+106
+00:10:17.700 --> 00:10:18.150
+Chris Kerswell: Here.
+
+107
+00:10:18.780 --> 00:10:20.220
+Chris Kerswell: I can really
+
+108
+00:10:22.260 --> 00:10:25.230
+Chris Unwin (He/Him): Just sounds like you've gone to the bathroom with your headset on
+
+109
+00:10:27.570 --> 00:10:29.610
+Chris Kerswell: Scene in personal Naked Gun
+
+110
+00:10:29.970 --> 00:10:31.950
+Chris Unwin (He/Him): So the naked. Yeah, yeah, it
+
+111
+00:10:32.010 --> 00:10:33.600
+Chris Unwin (He/Him): Is Naked Gun. Absolutely.
+
+112
+00:10:34.680 --> 00:10:35.370
+Chris Unwin (He/Him): I don't have
+
+113
+00:10:35.400 --> 00:10:44.280
+Chris Unwin (He/Him): One. But I do have my water glass. Now I don't know about you, but I'm a fan of ingeniously simple solutions so
+
+114
+00:10:49.650 --> 00:10:56.400
+Chris Kerswell: Yeah. If there's one thing that will be knocking on this podcast, it is, of course, water.
+
+115
+00:10:58.710 --> 00:10:59.940
+Chris Kerswell: Hydrate while kids.
+
+116
+00:11:00.900 --> 00:11:02.970
+Chris Unwin (He/Him): They had raided oh look at that color.
+
+117
+00:11:04.290 --> 00:11:05.370
+Chris Unwin (He/Him): Beautiful.
+
+118
+00:11:05.700 --> 00:11:08.550
+Chris Kerswell: We actually show people now it's a novelty.
+
+119
+00:11:09.300 --> 00:11:16.560
+Chris Unwin (He/Him): Yeah. So for anyone who's listening on the podcast. It's a really dark, golden almost copper color.
+
+120
+00:11:17.610 --> 00:11:25.110
+Chris Unwin (He/Him): It's quite well carbonated not super carbonated. But I think that's just from the brewing process but
+
+121
+00:11:27.660 --> 00:11:28.740
+Chris Unwin (He/Him): Beautiful knows to it.
+
+122
+00:11:32.310 --> 00:11:37.140
+Chris Kerswell: In terms of my boots. So I have a nice dark brown caramel color.
+
+123
+00:11:38.340 --> 00:11:48.360
+Chris Kerswell: One thing I was a little bit disappointed. Is that is not hold it held its head. Well, but it is probably not the appropriate class, right, so here we can forgive that.
+
+124
+00:11:49.770 --> 00:11:51.120
+Chris Kerswell: And let's give it a taste.
+
+125
+00:11:56.580 --> 00:12:00.300
+Chris Kerswell: Yeah, I'm happy to report that that does not taste in any way festive
+
+126
+00:12:02.040 --> 00:12:02.940
+Chris Unwin (He/Him): So that's pretty good thing.
+
+127
+00:12:03.450 --> 00:12:05.190
+Chris Unwin (He/Him): Yeah, nice well
+
+128
+00:12:06.270 --> 00:12:07.110
+Chris Unwin (He/Him): fest beer.
+
+129
+00:12:07.860 --> 00:12:10.410
+Chris Kerswell: Huh. Okay, good. Brown German beer.
+
+130
+00:12:12.630 --> 00:12:12.990
+Chris Unwin (He/Him): Right.
+
+131
+00:12:13.830 --> 00:12:22.020
+Chris Unwin (He/Him): So we've got a we've got a bit as Chris and now now everyone's going to see how quickly I get through my beer and how yours just seems to last forever.
+
+132
+00:12:23.160 --> 00:12:23.850
+Chris Kerswell: Lot of steps.
+
+133
+00:12:24.420 --> 00:12:40.500
+Chris Unwin (He/Him): So slow small sense. So today we're talking about putting in an end to end database DevOps or change control or get change management, whatever you want to call it.
+
+134
+00:12:41.280 --> 00:12:42.870
+Chris Kerswell: The way you describe it Chris just
+
+135
+00:12:43.170 --> 00:12:44.910
+Chris Unwin (He/Him): Beautiful rolls off the tongue doesn't
+
+136
+00:12:44.910 --> 00:12:57.630
+Chris Unwin (He/Him): Exactly. So we're going to be putting in place this pipeline and we're going to be using as your DevOps right thing and sequel change automation.
+
+137
+00:12:58.470 --> 00:13:13.410
+Chris Unwin (He/Him): Right wicked well that that we're already off to a good start. So what we need is as your DevOps and the sequel talk about installed. Now, fortunately, I have one of our AWS based VMware available for this particular walk through
+
+138
+00:13:13.890 --> 00:13:16.200
+Chris Unwin (He/Him): All so anyone who's watching will be seeing me
+
+139
+00:13:16.560 --> 00:13:23.910
+Chris Unwin (He/Him): Actually do this on a virtual machine that we have available. And anyone who's listening just pretend
+
+140
+00:13:26.040 --> 00:13:27.930
+Chris Kerswell: A virtual machine very fancy
+
+141
+00:13:28.260 --> 00:13:30.090
+Chris Unwin (He/Him): Indeed, indeed, so
+
+142
+00:13:30.270 --> 00:13:32.640
+Chris Kerswell: Mild virtual machine. What is this
+
+143
+00:13:33.330 --> 00:13:43.650
+Chris Unwin (He/Him): So the last time we did a Christmas themed episode or a festive episode we that was DB I'll seven, I think.
+
+144
+00:13:44.250 --> 00:13:48.150
+Chris Kerswell: I'm pretty sure that's what caused the pandemic in the first place. So we're trying to avoid that as much
+
+145
+00:13:49.470 --> 00:14:07.650
+Chris Unwin (He/Him): I mean, if, if any of you haven't listened to DB L seven, I think I'd gotten the hand of audio editing by then ish for these sessions, alongside the day job. So hopefully it's it's pretty reasonable and also it was featured the old Christmas poem as well so
+
+146
+00:14:08.130 --> 00:14:11.130
+Chris Unwin (He/Him): I won't spoil that for you. Go back to DBS seven and
+
+147
+00:14:11.130 --> 00:14:11.850
+Chris Unwin (He/Him): Have a listen.
+
+148
+00:14:12.360 --> 00:14:16.050
+Chris Kerswell: Or better yet, go back to any other episodes of ppl and listen to that, instead
+
+149
+00:14:17.490 --> 00:14:27.540
+Chris Unwin (He/Him): But we did talk about we did talk about Santa doing incremental delivery and why incremental delivery is desirable over big bang deployments.
+
+150
+00:14:27.570 --> 00:14:29.040
+Chris Unwin (He/Him): Or bigger than deliveries.
+
+151
+00:14:29.520 --> 00:14:31.260
+Chris Unwin (He/Him): And I thought it was a great episode.
+
+152
+00:14:32.670 --> 00:14:44.490
+Chris Unwin (He/Him): But what we didn't talk about is the practical parts of that we didn't actually talk about, hey, how do you do this thing from end to end say using something like sequel change automation. So, that is what we're going to do today.
+
+153
+00:14:45.090 --> 00:14:52.590
+Chris Unwin (He/Him): Awesome, awesome, Chris. When was the last time you, Chris. When was the last time you set up an end to end pipeline. Do you think
+
+154
+00:14:53.130 --> 00:14:54.330
+Chris Kerswell: Quite a long time ago.
+
+155
+00:14:55.650 --> 00:14:56.160
+Chris Kerswell: Mark
+
+156
+00:14:57.630 --> 00:14:59.730
+Chris Kerswell: Oh, probably at least a year ago.
+
+157
+00:15:00.330 --> 00:15:02.190
+Chris Unwin (He/Him): Well, fortunately,
+
+158
+00:15:03.510 --> 00:15:04.770
+Chris Unwin (He/Him): seamless transition
+
+159
+00:15:05.100 --> 00:15:05.940
+Chris Unwin (He/Him): Here we are.
+
+160
+00:15:07.470 --> 00:15:08.100
+Chris Unwin (He/Him): To you're
+
+161
+00:15:08.220 --> 00:15:10.770
+Chris Kerswell: Very good at critiquing the things you do, though, so
+
+162
+00:15:10.920 --> 00:15:13.080
+Chris Unwin (He/Him): Hang on. Look to your left to your right.
+
+163
+00:15:14.760 --> 00:15:15.480
+Chris Unwin (He/Him): In surprise.
+
+164
+00:15:15.510 --> 00:15:16.980
+Chris Unwin (He/Him): Because you're now looking at the screen.
+
+165
+00:15:17.310 --> 00:15:19.740
+Chris Kerswell: Oh, wow.
+
+166
+00:15:20.970 --> 00:15:21.900
+Chris Kerswell: My radiator.
+
+167
+00:15:22.590 --> 00:15:23.370
+Chris Unwin (He/Him): Is it warm there.
+
+168
+00:15:24.360 --> 00:15:30.930
+Chris Kerswell: Oh yeah, toasty. I'm going to move the screen to here so that I'm actually looking here.
+
+169
+00:15:32.520 --> 00:15:39.060
+Chris Unwin (He/Him): I'm just going to look at the camera for a minute with for again for anyone listening. I'm making a smoldering handsome.
+
+170
+00:15:40.680 --> 00:15:42.150
+Chris Kerswell: Oscar Wilde. Eat your heart out
+
+171
+00:15:45.540 --> 00:15:49.800
+Chris Unwin (He/Him): Anyway, I'm so sorry. If anyone actually watches this, my bad.
+
+172
+00:15:51.660 --> 00:15:52.170
+Chris Unwin (He/Him): Oh,
+
+173
+00:15:52.410 --> 00:15:54.150
+Chris Unwin (He/Him): That was a goofy laugh and a half.
+
+174
+00:15:56.160 --> 00:16:01.020
+Chris Unwin (He/Him): I've always wanted to be able to do a goofy impression. I've never been able to, it's always been Scooby Doo for me.
+
+175
+00:16:01.530 --> 00:16:05.160
+Chris Kerswell: I mean, that was good enough. I think you don't need to anymore.
+
+176
+00:16:10.830 --> 00:16:11.610
+Chris Kerswell: Exactly.
+
+177
+00:16:12.900 --> 00:16:17.370
+Chris Kerswell: I love how you said this has got to be a paint added later than you're throwing out all this thoughts.
+
+178
+00:16:18.420 --> 00:16:26.460
+Chris Unwin (He/Him): That's fine. The key to editing is to not Edit and then to just put everything on the internet and pray that everything will be okay.
+
+179
+00:16:27.390 --> 00:16:28.440
+Chris Kerswell: It'll be around the night
+
+180
+00:16:28.890 --> 00:16:48.780
+Chris Unwin (He/Him): Exactly, exactly. Brilliant. Okay well we're on. We're on the virtual machine. We've got a blank desktop, at the moment, or we can see is a nice big garishly red screen. So we've gone ahead and set up a new repo, or I've set up a new repo in as your DevOps and have caught it DB ale pipeline.
+
+181
+00:16:49.650 --> 00:16:52.140
+Chris Kerswell: That sounds quite fun at ppl pipeline.
+
+182
+00:16:52.830 --> 00:16:56.730
+Chris Kerswell: Though Nick and what what's coming out the end of that is probably going to be pretty good.
+
+183
+00:16:57.240 --> 00:17:02.160
+Chris Unwin (He/Him): I mean, judging by the amount of beer we drink during these shows, Chris. Use your imagination.
+
+184
+00:17:03.390 --> 00:17:03.870
+Chris Kerswell: Order.
+
+185
+00:17:05.040 --> 00:17:07.110
+Chris Unwin (He/Him): new get packages. That's right.
+
+186
+00:17:09.510 --> 00:17:10.110
+Chris Unwin (He/Him): So,
+
+187
+00:17:11.160 --> 00:17:26.760
+Chris Unwin (He/Him): Even before we go ahead and deliver even before we go ahead and clone the repo. Okay. So all I've done is gone back to the default collection energy or DevOps and I've just created a brand new project I've called it the DBS pipeline.
+
+188
+00:17:27.450 --> 00:17:27.720
+Chris Kerswell: Okay.
+
+189
+00:17:27.960 --> 00:17:31.830
+Chris Unwin (He/Him): It has a get repository back end. And it's set to Agile
+
+190
+00:17:32.940 --> 00:17:34.080
+Chris Unwin (He/Him): Work processes.
+
+191
+00:17:34.650 --> 00:17:35.730
+Chris Kerswell: Oh I trial.
+
+192
+00:17:36.090 --> 00:17:44.490
+Chris Unwin (He/Him): Now the problem is I don't have any databases to work with. I've got one of them. I've got the DDL database underscore production.
+
+193
+00:17:45.690 --> 00:17:47.730
+Chris Unwin (He/Him): And that's our prod database for today.
+
+194
+00:17:48.420 --> 00:17:58.680
+Chris Unwin (He/Him): Okay. So Chris, can you think of any way that I could, I don't know, in just a couple of seconds spin up a couple of databases for us to work from today.
+
+195
+00:17:59.820 --> 00:18:05.940
+Chris Kerswell: Oh that's tricky. Chris gee whiz, I hope you have a backup to restore but that's going to take a little while.
+
+196
+00:18:06.540 --> 00:18:08.910
+Chris Kerswell: Alternatively we could just create a brand new.
+
+197
+00:18:08.910 --> 00:18:14.250
+Chris Kerswell: Database and manually recreate everything that's going to be a bit tricky though.
+
+198
+00:18:14.700 --> 00:18:17.250
+Chris Kerswell: Yeah, wonder, do we have some kind of
+
+199
+00:18:17.610 --> 00:18:19.680
+Chris Kerswell: cloning technology, we can use
+
+200
+00:18:20.580 --> 00:18:30.930
+Chris Unwin (He/Him): Well, you're lucky there, Chris. Because actually, we definitely do. So the good thing here is that if I open up. Wait.
+
+201
+00:18:31.710 --> 00:18:45.270
+Chris Unwin (He/Him): Where am I, who am I so I've just open up Chrome. And I've jumped over to red gate sequel claim. So, for the benefit of everyone listening. I haven't yet created any images or any clones of my DBs production database.
+
+202
+00:18:45.960 --> 00:18:56.520
+Chris Unwin (He/Him): So I'm going to go ahead and hit Create image so you can create an image from a live backup or from a sequel server database. I of course, I'm going to go from a live sequel server database.
+
+203
+00:18:57.090 --> 00:19:04.410
+Chris Kerswell: Quick record, most people tend to do from a database, rather than sorry from a backend database.
+
+204
+00:19:04.740 --> 00:19:16.590
+Chris Kerswell: Yes. Um, it's, it's actually pretty rata for our live database. We tend to find which makes sense okay yeah type of backup backup why affected live production system. If you don't have to
+
+205
+00:19:17.430 --> 00:19:30.120
+Chris Unwin (He/Him): Yep, exactly. And the so what I'm going to do here is because this is actually a copy of my production database. And actually, the DB database is just a clone or a copy of my
+
+206
+00:19:30.660 --> 00:19:38.610
+Chris Unwin (He/Him): DNA database which you can find in my GitHub, should you wish to download it and have a walkthrough of this as well.
+
+207
+00:19:39.780 --> 00:19:40.710
+Chris Kerswell: In your kit hub.
+
+208
+00:19:41.190 --> 00:19:42.150
+Chris Unwin (He/Him): In my GitHub.
+
+209
+00:19:42.690 --> 00:19:44.850
+Chris Kerswell: And if people want to find out where they go. Chris
+
+210
+00:19:45.330 --> 00:19:46.470
+github.com
+
+211
+00:19:48.210 --> 00:19:49.050
+Chris Kerswell: Thanks, Chris.
+
+212
+00:19:52.470 --> 00:20:04.740
+Chris Unwin (He/Him): No, but I'll share it on Twitter. After this, after we get this all out as well. We're also going to start putting the transcripts for this into GitHub as well so
+
+213
+00:20:05.220 --> 00:20:17.160
+Chris Unwin (He/Him): If you want to download the transcripts. If you're hard of hearing or if you want to follow along that way, then you can again go to the GitHub and again I'll share that via Twitter, etc. To make sure you've got everything
+
+214
+00:20:17.940 --> 00:20:18.390
+Chris Kerswell: That was great.
+
+215
+00:20:19.110 --> 00:20:26.430
+Chris Unwin (He/Him): Excellent. So sequel server instance and database. We get to pick. So I picked my production copy
+
+216
+00:20:26.940 --> 00:20:33.720
+Chris Unwin (He/Him): And now I'm going to specify that I would like to modify the image. Of course, the way that we do this.
+
+217
+00:20:34.380 --> 00:20:41.640
+Chris Unwin (He/Him): Traditionally with sequel clone is I'm just going to hand over. I'm just dragging and dropping in now a masking files so
+
+218
+00:20:42.180 --> 00:21:01.680
+Chris Unwin (He/Him): Data Moscow produces files called DNS mask set files which are effectively XML files which have the structure of our rules and telling us how we want data to be de identified because, of course, as we know from previous DBS. We don't want that sensitive information in Devon test.
+
+219
+00:21:02.550 --> 00:21:03.420
+Absolutely.
+
+220
+00:21:04.980 --> 00:21:19.500
+Chris Unwin (He/Him): Then we got to do is pick the UNC path. So we're actually just going to pick a path to a file share where we're going to drop the image. And of course, Christopher for those listening. Once we create this image. What's the difference between the image in the clone them.
+
+221
+00:21:20.430 --> 00:21:34.170
+Chris Kerswell: So the image is basically a full restore the database inside a virtual hard drive. So you mount the virtual hard drive onto the file share the client is then and
+
+222
+00:21:34.860 --> 00:21:45.630
+Chris Kerswell: I think that like a virtual snapshot, but try to avoid using the word snapshot is people get confused with databases kind of rightly because snapshot has its own definition.
+
+223
+00:21:45.960 --> 00:21:47.880
+Chris Kerswell: So think of it more as a difference in desk.
+
+224
+00:21:48.240 --> 00:21:59.640
+Chris Kerswell: That references on a data level the virtual hard drive. So if you think of a virtual machine like Chris is working. From here, you might take a snapshot
+
+225
+00:22:00.120 --> 00:22:10.080
+Chris Kerswell: Or create a difference in disk and a point in time that will refer back to the virtual hard drive itself and then you work from that snapshot on the virtual machine.
+
+226
+00:22:10.890 --> 00:22:20.070
+Chris Kerswell: So that's the, that's the principle, we're using here we create as a clone a new virtual snapshot or difference in disk.
+
+227
+00:22:20.550 --> 00:22:30.840
+Chris Kerswell: Of that virtual harddrive which includes the full database. Yeah. And so when people access the clone that combined
+
+228
+00:22:31.380 --> 00:22:39.870
+Chris Kerswell: Different things defensing this plus the virtual harddrive equals the database. They currently working on. Yeah, the beauty. Here is the ability like Chris's
+
+229
+00:22:40.770 --> 00:22:50.370
+Chris Kerswell: Nicely showing now that you can spin up multiple different tasks. These are the clones yeah handle the combination of those won't give you
+
+230
+00:22:50.760 --> 00:23:02.340
+Chris Kerswell: Unique views over the top of the original database. So it's almost like almost like you've got an entire team of developers who are working in complete isolation.
+
+231
+00:23:02.850 --> 00:23:03.150
+Chris Unwin (He/Him): Yeah.
+
+232
+00:23:03.450 --> 00:23:13.410
+Chris Kerswell: The reality is that there's still a little bit of shared resource on the virtual hard drive itself, which means if you have 20 developers versus one developer
+
+233
+00:23:13.770 --> 00:23:23.250
+Chris Kerswell: There's maybe a little bit more load on the systems. But otherwise, they are completely isolated so I could do something like create a new store procedure.
+
+234
+00:23:24.390 --> 00:23:38.670
+Chris Kerswell: On my local clone and the beauty is that Chris working on his local system with his own pipeline has no idea that I've done that they're completely isolated in that regards yeah
+
+235
+00:23:38.760 --> 00:23:47.880
+Chris Unwin (He/Him): Exactly. And for the benefits of those listening as well. What I've done is I've just gone ahead and spun up a couple of clones, whilst Chris was describing that there
+
+236
+00:23:48.660 --> 00:24:04.740
+Chris Unwin (He/Him): So we now have if we jump back over into sequel Server Management Studio, we should find that now on this demonstration instance, we actually have a DB database production DB database testing and DDL database, Dev.
+
+237
+00:24:05.070 --> 00:24:05.430
+Oh,
+
+238
+00:24:06.810 --> 00:24:20.850
+Chris Unwin (He/Him): Indeed, indeed, so we've got our dev database to work from. And we've got all of the standard objects on it from the DM database. So that's everything from your DM customer table employees suppliers, etc.
+
+239
+00:24:23.250 --> 00:24:26.310
+Chris Kerswell: Also that data has been anonymized as part of this process. So,
+
+240
+00:24:26.400 --> 00:24:45.480
+Chris Unwin (He/Him): It has indeed. So if we open this up and take a look at the DM customer table. So for everyone listening at home, the DM database normally has in a row in row one is normally Francesco a rat Yoko and in number two is Donald along now.
+
+241
+00:24:46.050 --> 00:24:48.720
+Chris Kerswell: And notice boats boats dataset far too well.
+
+242
+00:24:48.990 --> 00:24:52.710
+Chris Unwin (He/Him): I know it well, but then I know this is it the
+
+243
+00:24:54.360 --> 00:25:07.860
+Chris Unwin (He/Him): The stack overflow database. Nobody has Ken Jay Sanchez, I think at the top. I think that's one of the one of the examples. Anyway, so we've got Colombo octane now and I can't say I can't say that word.
+
+244
+00:25:08.400 --> 00:25:08.670
+Chris Kerswell: I like
+
+245
+00:25:09.540 --> 00:25:10.800
+Chris Unwin (He/Him): Yeah, I can't say that.
+
+246
+00:25:12.030 --> 00:25:13.800
+Chris Unwin (He/Him): Because otherwise, you wonder what I mean.
+
+247
+00:25:15.420 --> 00:25:15.900
+Chris Unwin (He/Him): Anyway,
+
+248
+00:25:16.140 --> 00:25:27.390
+Chris Unwin (He/Him): We've got that. And then, Robin. And then as you can see, we've got some nice realistic addresses telephone numbers email addresses, etc. For the testing purposes.
+
+249
+00:25:27.870 --> 00:25:34.050
+Chris Kerswell: As anyone listening who has the name Alexa, you have my sympathy for what Amazon has done to your name.
+
+250
+00:25:34.800 --> 00:25:37.350
+Chris Unwin (He/Him): You can change the week word for them, though.
+
+251
+00:25:37.860 --> 00:25:43.560
+Chris Unwin (He/Him): Okay, yeah, yeah. It doesn't have to be the a word. It can be the actual name of the device. The E word
+
+252
+00:25:45.180 --> 00:25:48.120
+Chris Unwin (He/Him): And I think it can be the word actually as well. The creators.
+
+253
+00:25:49.140 --> 00:25:53.310
+Chris Kerswell: So you can't you can't change it to a to a world of your choosing.
+
+254
+00:25:53.340 --> 00:25:55.050
+Chris Kerswell: Like I could come around your house.
+
+255
+00:25:55.470 --> 00:25:59.520
+Chris Kerswell: And rename it or re change the week would be Chris
+
+256
+00:25:59.700 --> 00:26:08.430
+Chris Unwin (He/Him): That would be perfect. That would be perfect. But no, I know some people are keen to change it to like Jarvis or something like that. But no, sadly, not at this time.
+
+257
+00:26:08.970 --> 00:26:10.410
+Chris Kerswell: Oh gee boss will
+
+258
+00:26:10.860 --> 00:26:21.660
+Chris Unwin (He/Him): Be good one. Yeah, Jeeves set an alarm for anyway. So come on, let's get this pipeline in place. Chris So we've created the databases we need right
+
+259
+00:26:21.990 --> 00:26:35.850
+Chris Kerswell: We have three databases prod dev and testing. So I presume that we can I do some changes in dev and we're going to promote those by source control via build to a testing.
+
+260
+00:26:36.690 --> 00:26:43.350
+Chris Unwin (He/Him): Yeah. But first things first, of course, we need to create our local repository. So I
+
+261
+00:26:43.890 --> 00:26:45.120
+Chris Kerswell: have even thought that
+
+262
+00:26:45.270 --> 00:26:51.390
+Chris Unwin (He/Him): Would be interesting for people to see because then we need to do the whole the baseline anything
+
+263
+00:26:52.020 --> 00:26:53.460
+Chris Kerswell: Okay, cool. Let's go for it.
+
+264
+00:26:53.640 --> 00:26:54.900
+Chris Unwin (He/Him): We're not talking about tennis.
+
+265
+00:26:55.680 --> 00:27:03.840
+Chris Unwin (He/Him): So, so I've come back into as your DevOps and I'm greeted with the screen. Welcome to the project what service, would you like to start with.
+
+266
+00:27:04.080 --> 00:27:20.340
+Chris Unwin (He/Him): Of course, I haven't set anything up in my project yet. So I'm going to jump over into repose. I'm actually going to initialize the repo with a readme. So we're keeping this pipeline Superbad there's no get ignores, no nothing. We're literally just going with a readme.
+
+267
+00:27:22.320 --> 00:27:30.510
+Chris Unwin (He/Him): Now from here. We're then going to come up to clone and you can clone the repo. I'm going to actually clone it via HTTP.
+
+268
+00:27:31.170 --> 00:27:45.720
+Chris Unwin (He/Him): And if you jump into your file explorer, we should be able to find a location where we want to host our are working folders so these can typically be anywhere. Some people put them in their documents. Some people put them in the C drive
+
+269
+00:27:47.010 --> 00:27:55.170
+Chris Unwin (He/Him): I just going to go ahead and pop a new folder in see working folders on my particular machine. And I'm going to call it dB.
+
+270
+00:27:56.100 --> 00:28:07.680
+Chris Unwin (He/Him): Apollo and then I'm going to right click and you should have get really installed at this point, I probably should have mentioned that in a prerequisites. But yeah, have get installed.
+
+271
+00:28:08.910 --> 00:28:15.450
+Chris Unwin (He/Him): And we're going to go ahead and we're going to get clone repository course.
+
+272
+00:28:16.140 --> 00:28:17.130
+Chris Kerswell: If there's anyone
+
+273
+00:28:17.370 --> 00:28:26.430
+Chris Kerswell: Anyone who is a little bit more of a Luddite then then Chris like me, I would probably be using something I taught us for this.
+
+274
+00:28:26.880 --> 00:28:28.710
+Chris Unwin (He/Him): Yeah, taught us get or
+
+275
+00:28:30.090 --> 00:28:44.610
+Chris Unwin (He/Him): What's the tree. One source tree or something like that that be absolutely fine. And you kind of get client that you use to interact with your technology of choice. Today we're using as your DevOps. But that doesn't preclude the use of as your DevOps with the technology, you might use
+
+276
+00:28:45.660 --> 00:28:47.820
+Chris Unwin (He/Him): Bitbucket or you might use
+
+277
+00:28:48.990 --> 00:28:53.070
+Chris Unwin (He/Him): Was another good one. Get lab or GitHub, or whatever, whatever it is.
+
+278
+00:28:54.810 --> 00:29:13.860
+Chris Unwin (He/Him): So I'm cloning the repo into DVM. There we go. And if we jump back into our folder will actually notice that we've created the folder. DDL pipeline. So that's our remote repo that's been cloned to locally. So we now have our own local kind of copy of the master branch.
+
+279
+00:29:14.190 --> 00:29:21.210
+Chris Unwin (He/Him): Oh, excellent. And from there on out. Actually, we just need to make sure that we
+
+280
+00:29:21.750 --> 00:29:30.750
+Chris Unwin (He/Him): Link our database into source control. Now, obviously, there are a couple of different ways of doing this. Some people know the traditional state based route of
+
+281
+00:29:31.110 --> 00:29:44.550
+Chris Unwin (He/Him): We need to commit all of our objects into our repository. But of course, today we're working migrations based with sequel change automation. So I've come straight over into Management Studio and I'm going to open up change automation.
+
+282
+00:29:44.940 --> 00:29:50.160
+Chris Unwin (He/Him): We're going to get rid of the notification that we keep shipping wonderful, wonderful value.
+
+283
+00:29:51.300 --> 00:29:54.150
+Chris Unwin (He/Him): And I'm going to go ahead and hit new project.
+
+284
+00:29:57.720 --> 00:29:58.140
+Chris Kerswell: Called
+
+285
+00:29:58.230 --> 00:29:58.980
+Chris Kerswell: The project name.
+
+286
+00:29:59.010 --> 00:30:03.240
+Chris Unwin (He/Him): That's, that's a really good question. So this project. I'm going to call the DVLA
+
+287
+00:30:04.560 --> 00:30:05.070
+Chris Unwin (He/Him): Pipeline.
+
+288
+00:30:06.870 --> 00:30:10.110
+Chris Unwin (He/Him): Just got a call it the same as the project in DevOps.
+
+289
+00:30:11.010 --> 00:30:14.130
+Chris Kerswell: We should make a thing called the ppl pipeline, by the way.
+
+290
+00:30:14.400 --> 00:30:19.110
+Chris Unwin (He/Him): The DVR pipeline would be great. And then people would be able to see maybe it's our roadmap for what's up.
+
+291
+00:30:19.110 --> 00:30:20.310
+Chris Kerswell: And yeah.
+
+292
+00:30:20.340 --> 00:30:35.850
+Chris Unwin (He/Him): If you want to be included on the DBS roadmap last know are Send me a tweet, send us an email DDL at Red hyphen gate.com or at plant based sequel or at Red gate on Twitter and we will we'll try and get your suggestions incorporated
+
+293
+00:30:36.120 --> 00:30:39.510
+Chris Kerswell: always email us as well ppl red.com
+
+294
+00:30:39.810 --> 00:30:41.100
+Chris Unwin (He/Him): I literally just said that.
+
+295
+00:30:41.520 --> 00:30:45.810
+Chris Kerswell: Yeah, I just want to make sure that that want to clear because that's the only one I know how to use
+
+296
+00:30:46.140 --> 00:30:46.380
+Yeah.
+
+297
+00:30:47.640 --> 00:30:49.650
+Chris Unwin (He/Him): When you said Luddite then this
+
+298
+00:30:50.190 --> 00:31:01.200
+Chris Unwin (He/Him): is brilliant. So I found my local repository. I found my top level get folder and my doc get folder and I'm just going to select that as my project folder.
+
+299
+00:31:01.560 --> 00:31:16.170
+Chris Unwin (He/Him): And then all you've got to do is set the development source. Now with change automation, you actually get a whole host of different options for selecting a source of your development changes, it could be brown. It could be barbecue tomato.
+
+300
+00:31:16.770 --> 00:31:18.480
+A
+
+301
+00:31:19.920 --> 00:31:22.440
+Chris Kerswell: While so you should have a cranberry surely
+
+302
+00:31:22.650 --> 00:31:24.330
+Chris Unwin (He/Him): Cranberry cranberry
+
+303
+00:31:25.440 --> 00:31:26.160
+Chris Unwin (He/Him): Horseradish.
+
+304
+00:31:26.820 --> 00:31:28.950
+Chris Kerswell: Horseradish or bread source.
+
+305
+00:31:30.690 --> 00:31:34.200
+Chris Unwin (He/Him): Bread source is the single worst thing in the universe.
+
+306
+00:31:34.260 --> 00:31:35.580
+Chris Unwin (He/Him): It is disgusting.
+
+307
+00:31:36.660 --> 00:31:42.660
+Chris Unwin (He/Him): It is horrible. It is rancid, and it tastes like nothing, it just
+
+308
+00:31:42.720 --> 00:31:45.900
+Chris Kerswell: Takes. How could something both be rented and tastes like nothing
+
+309
+00:31:46.410 --> 00:31:48.780
+Chris Unwin (He/Him): Well, I don't know Chris try drinking some bread.
+
+310
+00:31:49.380 --> 00:31:50.400
+Chris Unwin (He/Him): See exactly what I mean.
+
+311
+00:31:51.210 --> 00:31:52.440
+Chris Kerswell: I like bread source.
+
+312
+00:31:53.160 --> 00:31:55.680
+Chris Unwin (He/Him): Anyway, so so surprised that you
+
+313
+00:31:55.770 --> 00:32:03.060
+Chris Kerswell: Chose to build a clone beforehand, rather than using the sequel clone selection.
+
+314
+00:32:03.210 --> 00:32:18.660
+Chris Unwin (He/Him): He is my bad. Yeah, it doesn't matter. It doesn't really matter because maybe we have an automated process that builds those clones for us right maybe we're already using sequel provision for the masking and cloning and now what we want is to put the database under source control it.
+
+315
+00:32:18.750 --> 00:32:20.520
+Chris Kerswell: does matter. Chris, it does.
+
+316
+00:32:20.970 --> 00:32:29.130
+Chris Unwin (He/Him): So I'm going to pick that existing database. I'm actually going to find the dev database in the drop down DVR database dev and test the connection.
+
+317
+00:32:29.580 --> 00:32:30.660
+Chris Unwin (He/Him): Right then.
+
+318
+00:32:30.960 --> 00:32:37.470
+Chris Unwin (He/Him): When that's all been done, I can change the shadow database settings if I like now for those listening the shadow database.
+
+319
+00:32:37.860 --> 00:32:51.330
+Chris Unwin (He/Him): That is built dynamically by verifying your changes so that any more any migration scripts you've edited actually gets run against the shadow to verify that they are that they're working that that syntactically valid.
+
+320
+00:32:52.470 --> 00:32:53.490
+Chris Kerswell: Now we have been
+
+321
+00:32:53.790 --> 00:33:03.750
+Chris Unwin (He/Him): It's really handy. It's like doing a bit if you delete the shadow. It will just rebuild it. So you are doing the build before you commit to version control. That's pretty cool.
+
+322
+00:33:04.170 --> 00:33:09.000
+Chris Kerswell: Pro Tip as well here is that you can set that to be on a different instance. So
+
+323
+00:33:09.030 --> 00:33:24.540
+Chris Kerswell: Yes, depending on setup that can be really useful because like we have here we have a tools instance. And we have a working instance. So by putting the shadow as Chris's currently doing on our tools instance, it means you don't even know it exists.
+
+324
+00:33:25.080 --> 00:33:36.420
+Chris Unwin (He/Him): Exactly just zooming in, for everyone's benefit, but as you can see, we've got the local tools instance which is the separate instance from my named instance where I'm hosting the dev database.
+
+325
+00:33:37.980 --> 00:33:49.410
+Chris Unwin (He/Him): So we've changed the shadow to be on the tools instance. And we're going to hit next. Now this is the point at which we get to add filters and comparison options and I get. I get asked about filters and comparison options.
+
+326
+00:33:49.830 --> 00:34:07.440
+Chris Unwin (He/Him): All the damn time all the damn time. Now, as a rule of thumb when people ask me when people say, what would you recommend in terms of a filter, I would say, I'm not going to recommend anything because your environment is different from everyone else's environment.
+
+327
+00:34:08.610 --> 00:34:09.660
+Chris Kerswell: Yeah, we
+
+328
+00:34:10.680 --> 00:34:14.130
+Chris Kerswell: Usually say filter based on project.
+
+329
+00:34:15.150 --> 00:34:30.000
+Chris Kerswell: So if you have one team working on one part of the database specifically on one thing in that database and try and filter it based on that, but it's not as cut and dry the saving saving this schema should be filter out the schema should be filled.
+
+330
+00:34:30.330 --> 00:34:33.120
+Chris Unwin (He/Him): That's a really interesting point. That's actually not anything I ever
+
+331
+00:34:33.150 --> 00:34:39.060
+Chris Unwin (He/Him): Discuss with customers. Normally the discussion that comes up is users roles permissions.
+
+332
+00:34:40.350 --> 00:34:40.800
+Chris Unwin (He/Him): How
+
+333
+00:34:41.940 --> 00:34:52.440
+Chris Unwin (He/Him): And users roles and permissions at the database level can vary dramatically between environments. So that would suggest they shouldn't even be in version control in the first instance.
+
+334
+00:34:53.520 --> 00:34:55.440
+Chris Kerswell: Yeah, no. That makes complete sense as well.
+
+335
+00:34:56.280 --> 00:35:14.190
+Chris Unwin (He/Him): So I'm going to stick with no filters for the moment, and no additional comparison options. But of course, at this point, I would normally suggest go into compare create an SC PDF file which is a sequel compare filter file and filter out those users logins permissions, etc.
+
+336
+00:35:15.840 --> 00:35:16.140
+Chris Kerswell: Cool.
+
+337
+00:35:17.970 --> 00:35:26.310
+Chris Unwin (He/Him): So now all we have to do is baseline. Now, interestingly, you've got a couple of different options when it comes to baseline in a change automation project.
+
+338
+00:35:26.760 --> 00:35:36.510
+Chris Unwin (He/Him): Now because change automation is a migrations first tool. What it means is that we Chris's muted himself. If you didn't hear that as well.
+
+339
+00:35:38.010 --> 00:35:46.920
+Chris Unwin (He/Him): Classic Chris, but the, the interesting thing about migrations approaches that you need to know what you're building those incremental migrations on top of
+
+340
+00:35:48.240 --> 00:36:04.020
+Chris Unwin (He/Him): So we've changed automation. It's always important to know how you're going to baseline. If you've got a ridiculously old legacy database that's got 1,000,000,001 invalid objects that it might be safer to go along the route of using a clone as baseline.
+
+341
+00:36:05.220 --> 00:36:12.420
+Chris Unwin (He/Him): Because that means that it's almost like using a backup of the database as a baseline and saying, Okay, everything looks like this.
+
+342
+00:36:12.690 --> 00:36:23.820
+Chris Unwin (He/Him): And I'm going to build incrementally on top of that. And the good thing is, even if you update the image and the clone. Well, the migration log table used by change automation stays up to date.
+
+343
+00:36:25.260 --> 00:36:41.490
+Chris Unwin (He/Him): Right, so it doesn't matter if you update the image and update the clone. Because what will happen is it will still resolve against the clone and look at the migration log table and say, I know what version. I'm at. Do you want me to apply these scripts to the database. Yes, of course.
+
+344
+00:36:43.650 --> 00:36:54.600
+Chris Unwin (He/Him): Of course, if you want to update the image that's being used as a clone baseline by developers, then I would recommend creating a new image appended with underscore new
+
+345
+00:36:54.900 --> 00:37:08.880
+Chris Unwin (He/Him): And then doing the rename old and then change to the current image and letting that take over because renaming the image won't damage the relationship with the existing clones, but will allow people to more easily move over top tip.
+
+346
+00:37:09.060 --> 00:37:10.650
+Chris Kerswell: Tip that one before.
+
+347
+00:37:11.520 --> 00:37:12.900
+Chris Unwin (He/Him): Yes, well I've been through it.
+
+348
+00:37:16.140 --> 00:37:19.290
+Chris Kerswell: Let's go with the most straightforward example.
+
+349
+00:37:19.680 --> 00:37:21.570
+Chris Unwin (He/Him): Migration script as a baseline.
+
+350
+00:37:22.080 --> 00:37:22.350
+Cool.
+
+351
+00:37:23.580 --> 00:37:29.190
+Chris Unwin (He/Him): Okay, so we use a migration script as a baseline and sequel change automation will then look
+
+352
+00:37:29.220 --> 00:37:30.870
+Chris Kerswell: At an existing database and for
+
+353
+00:37:30.900 --> 00:37:36.600
+Chris Unwin (He/Him): Us, that's actually going to be our production database. But realistically, we would say make this
+
+354
+00:37:37.290 --> 00:37:45.210
+Chris Unwin (He/Him): Make this a copy of production, something that looks as close to production as possible so that you can then capture any changes on top of that.
+
+355
+00:37:46.020 --> 00:37:56.640
+Chris Unwin (He/Him): The baseline is supposed to be, Hey, this is what every database looks like and then we're going to capture all the work that's been done on dev, for instance, on top of that baseline.
+
+356
+00:37:57.720 --> 00:38:04.980
+Chris Unwin (He/Him): So we created our project I hit Create sequel change automation starts spinning we're, we're, we're
+
+357
+00:38:06.360 --> 00:38:08.910
+Chris Unwin (He/Him): I feel like this. DDL is going to be a longer one actually
+
+358
+00:38:09.540 --> 00:38:10.350
+Chris Kerswell: It might be here.
+
+359
+00:38:11.610 --> 00:38:13.920
+Chris Unwin (He/Him): It's the Christmas special
+
+360
+00:38:14.100 --> 00:38:27.930
+Chris Unwin (He/Him): Room and. Okay, so what's happened as a result of hitting create the migration script. Um, one thing that will notice is that it's told us it's created one migration that migration script.
+
+361
+00:38:28.260 --> 00:38:41.100
+Chris Unwin (He/Him): Which is numerically numbered to get the sequencing. Correct. It's got a date timestamp and my username and it's just a sequel file basically now that's been. Go ahead. Chris grew up.
+
+362
+00:38:41.490 --> 00:38:44.550
+Chris Kerswell: So I was gonna say the date timestamp.
+
+363
+00:38:45.810 --> 00:38:51.240
+Chris Kerswell: Is I guess the default option, but you don't have to have that right, Chris.
+
+364
+00:38:51.630 --> 00:38:53.370
+Chris Unwin (He/Him): No, you can rename it absolutely
+
+365
+00:38:55.020 --> 00:39:07.680
+Chris Unwin (He/Him): So I'm going to go ahead and hit check for changes and basically what that's going to do is it's going to look at, Dev. Let's go to figure out how that differs to the baseline that we just created from production now.
+
+366
+00:39:08.160 --> 00:39:22.650
+Chris Unwin (He/Him): It does. In this particular case it does differ. The reason that it differs is because I have a couple of masking tables that have been included here, now I'm actually going to D, select them again, these should have probably been filtered out. That's my
+
+367
+00:39:23.700 --> 00:39:24.180
+Chris Kerswell: Filter.
+
+368
+00:39:25.230 --> 00:39:32.340
+Chris Unwin (He/Him): But typically, I would filter out any masking objects like that our stats and T stats tables.
+
+369
+00:39:35.280 --> 00:39:35.610
+Chris Unwin (He/Him): So,
+
+370
+00:39:35.640 --> 00:39:37.740
+Chris Kerswell: What about the employee invoice line.
+
+371
+00:39:37.770 --> 00:39:44.220
+Chris Unwin (He/Him): Tables. That's a great question. Actually, let's have a look at why they. Okay, so we've got index naming differences.
+
+372
+00:39:44.910 --> 00:39:51.990
+Chris Unwin (He/Him): Interesting. Yeah. And we also have a no no it's not index naming differences. It's a trigger.
+
+373
+00:39:53.130 --> 00:39:59.580
+Chris Unwin (He/Him): So we've got a difference in our triggers where we've re enabled them. So that's fine. We'll just ignore the triggers for now.
+
+374
+00:40:00.330 --> 00:40:00.900
+Chris Kerswell: Right. Yep.
+
+375
+00:40:01.590 --> 00:40:16.320
+Chris Unwin (He/Him): So let's make some changes. Let's go ahead and make some changes. So first thing I'm going to do is I'm going to open up my dev database and open up DM customer let's let's add a column to DM customer
+
+376
+00:40:18.030 --> 00:40:18.900
+Chris Unwin (He/Him): Customer
+
+377
+00:40:19.200 --> 00:40:20.880
+Chris Unwin (He/Him): Do, date of birth,
+
+378
+00:40:22.080 --> 00:40:25.680
+Chris Unwin (He/Him): And when they get involved invalidates type, you can tell that there's
+
+379
+00:40:25.740 --> 00:40:27.600
+Chris Kerswell: A pen is not
+
+380
+00:40:29.610 --> 00:40:33.720
+Chris Unwin (He/Him): You can tell this was an 8.5% beer. I mean, that's an. Oops.
+
+381
+00:40:36.540 --> 00:40:46.350
+Chris Unwin (He/Him): Hang on. I've still got my side. I'm good. So we go custom DB and var char. And no, we don't want it. Mr. JOHN We want to date time because birthdays are date times
+
+382
+00:40:47.430 --> 00:40:48.030
+Chris Kerswell: Indeed,
+
+383
+00:40:52.050 --> 00:40:53.040
+Chris Unwin (He/Him): It's been a long day.
+
+384
+00:40:54.330 --> 00:40:55.500
+Chris Unwin (He/Him): So we save our changes.
+
+385
+00:40:56.010 --> 00:41:00.750
+Chris Unwin (He/Him): So we've added the new column. So we use the designer window in SMS to add a customer, date of birth,
+
+386
+00:41:00.990 --> 00:41:06.600
+Chris Unwin (He/Him): Which is a date time field and now we've jumped back over into change automation and hit refresh.
+
+387
+00:41:07.980 --> 00:41:09.750
+Chris Kerswell: And the wheel spin
+
+388
+00:41:09.840 --> 00:41:17.040
+Chris Unwin (He/Him): The wheel spins saying checking for changes and it's now identified that change that we've got our customer, date of birth, there
+
+389
+00:41:18.390 --> 00:41:25.050
+Chris Unwin (He/Him): Now as the only change that is ticked we can now go ahead and hit generate migrations for this and because it's a table change.
+
+390
+00:41:25.260 --> 00:41:34.950
+Chris Unwin (He/Him): It's just, it's gone ahead and generated the migration script. Now obviously that would be handled differently if it was a programmable object like a store procedure or function or a view.
+
+391
+00:41:35.340 --> 00:41:49.590
+Chris Unwin (He/Him): That would just be scripted out static Lee into its way into its state based representation, but because there's the table change. There we go. We've got a migration ID to track the migration and the altar TABLE statement.
+
+392
+00:41:50.190 --> 00:41:57.180
+Chris Kerswell: Alter Table do customer add customer data birth date, time, cool, perfect.
+
+393
+00:41:57.210 --> 00:42:07.110
+Chris Unwin (He/Him): No. Go. Exactly. And I'm going to hit control a control why in SMS, just to quickly apply my set formatting standard with sequel prompt
+
+394
+00:42:07.410 --> 00:42:09.930
+Chris Unwin (He/Him): Of course, because it's an absolute necessity.
+
+395
+00:42:10.860 --> 00:42:16.980
+Chris Kerswell: Chris. Let's say that someone wanted to add in a column that was not know
+
+396
+00:42:18.600 --> 00:42:18.810
+Chris Kerswell: Why
+
+397
+00:42:19.980 --> 00:42:20.220
+Chris Unwin (He/Him): Why
+
+398
+00:42:20.850 --> 00:42:21.780
+Chris Unwin (He/Him): An American accent.
+
+399
+00:42:22.320 --> 00:42:24.570
+Chris Kerswell: And they what businesses. My corny.
+
+400
+00:42:25.680 --> 00:42:27.120
+Chris Kerswell: Not at all.
+
+401
+00:42:28.170 --> 00:42:39.180
+Chris Kerswell: Scripted line. And if they wanted to add in a default value into those columns. How would they modify that script to add in. That's logic.
+
+402
+00:42:39.900 --> 00:42:43.710
+Chris Unwin (He/Him): I feel like you want. I feel like you want me to to answer this also.
+
+403
+00:42:43.740 --> 00:42:47.910
+Chris Unwin (He/Him): With my best American accent. And so the
+
+404
+00:42:48.450 --> 00:42:49.830
+Chris Kerswell: Australian only please
+
+405
+00:42:50.220 --> 00:42:51.210
+Chris Unwin (He/Him): Yeah, I can't do that.
+
+406
+00:42:52.290 --> 00:42:58.170
+Chris Unwin (He/Him): Otherwise it's gonna come out like this in the Navy and Australia and in the world is going to hate me know
+
+407
+00:43:00.150 --> 00:43:01.290
+Chris Unwin (He/Him): It was, wasn't it
+
+408
+00:43:02.310 --> 00:43:06.420
+Chris Unwin (He/Him): I say, Hey, Michelle is probably listening thinking. Shut up, Chris.
+
+409
+00:43:06.480 --> 00:43:24.870
+Chris Unwin (He/Him): Honestly, if you don't follow him a high hybrid DPA on Twitter. Hey, Mitch, Watson, the absolute just be all and end all what a wonderful person the warmest nicest person, you could ever hope to hope to me. So Christmas shout out to Amish Watson. Big hugs miss
+
+410
+00:43:26.460 --> 00:43:28.950
+Chris Kerswell: Christmas. Shout out to all of red coats, so
+
+411
+00:43:29.400 --> 00:43:30.240
+Chris Kerswell: Let me fair. I think
+
+412
+00:43:30.330 --> 00:43:42.000
+Chris Unwin (He/Him): Yeah, and it was, it was very good. Anyway, so go and follow Hamish Watson. So yeah, so what I'm gonna do is I'm actually you've got me stuck in the Australia now.
+
+413
+00:43:44.970 --> 00:43:50.910
+Chris Unwin (He/Him): So basically, Chris. No, I can't do it. I I forgotten how American sound and
+
+414
+00:43:52.830 --> 00:43:53.910
+Chris Unwin (He/Him): What was the question. Oh,
+
+415
+00:43:54.450 --> 00:43:55.830
+Chris Unwin (He/Him): gration scripts, so
+
+416
+00:43:57.180 --> 00:44:01.710
+Chris Unwin (He/Him): If you are adding a not know column to an existing table.
+
+417
+00:44:02.520 --> 00:44:04.200
+Chris Kerswell: And you want to put some logic in there.
+
+418
+00:44:04.590 --> 00:44:06.840
+Chris Unwin (He/Him): To put some logic into handle the data migration.
+
+419
+00:44:07.140 --> 00:44:12.570
+Chris Unwin (He/Him): Then you just open up the script and add your modifications and that's why we have this verification step.
+
+420
+00:44:13.320 --> 00:44:14.580
+Chris Unwin (He/Him): Because we need to be able to
+
+421
+00:44:14.880 --> 00:44:23.850
+Chris Unwin (He/Him): Run it against the database. So, so I've just generated that migration script I've saved it. We've got the changes and I can now hit verify
+
+422
+00:44:25.260 --> 00:44:33.570
+Chris Unwin (He/Him): That's then run it against the shadow database which should have been Chris's muted himself. Every time you meet yourself Chris every listener hears you
+
+423
+00:44:36.390 --> 00:44:37.620
+Chris Kerswell: It doesn't meet me or
+
+424
+00:44:39.510 --> 00:44:40.020
+Chris Unwin (He/Him): Yeah, it goes
+
+425
+00:44:41.310 --> 00:44:42.000
+Chris Unwin (He/Him): So,
+
+426
+00:44:43.080 --> 00:44:49.440
+Chris Unwin (He/Him): So we verified our project. And if I connect now to my tools instance, we should see
+
+427
+00:44:51.120 --> 00:45:09.120
+Chris Unwin (He/Him): That we have there. We are the DB al database dev red gate shadow. So the shadow database should now have had the migration scripts run against it and should have the customer, date of birth, column which it does so we verified that my migration script runs. So we're off to a good start.
+
+428
+00:45:12.630 --> 00:45:27.300
+Chris Unwin (He/Him): Now I'm going to head over to version control. And this is where we have that native integration with version control so sequel change automation is actually letting us know what changes. We currently have in our local repository, and we can actually see that for ourselves.
+
+429
+00:45:28.050 --> 00:45:37.170
+Chris Unwin (He/Him): Also, if we head over to the local repo and take a look. You should see that you've got the migrations for the baseline, the changes that we've just generated
+
+430
+00:45:37.470 --> 00:45:47.790
+Chris Unwin (He/Him): Any pre and post deployment scripts programmable objects if we've generated them and of course you're creating drop database provisioning scripts. Should we need them.
+
+431
+00:45:49.770 --> 00:46:00.600
+Chris Unwin (He/Him): So I'm going to go ahead and commit these and you can commit them either through get by doing a get commit or get add dots get commit dash em get push
+
+432
+00:46:01.830 --> 00:46:03.480
+Chris Kerswell: If you're like me, who
+
+433
+00:46:03.510 --> 00:46:08.430
+Chris Kerswell: Would rather not use get me to tools and just wants to stick an SMS
+
+434
+00:46:08.490 --> 00:46:12.330
+Chris Unwin (He/Him): We want the gooey in SMS. So we're just going to add a commit message.
+
+435
+00:46:14.370 --> 00:46:15.360
+Chris Unwin (He/Him): The smiley face.
+
+436
+00:46:16.830 --> 00:46:17.190
+Chris Kerswell: Sorry.
+
+437
+00:46:17.790 --> 00:46:20.790
+Chris Kerswell: For all the stars that's message smiley faces his
+
+438
+00:46:20.790 --> 00:46:27.420
+Chris Unwin (He/Him): Commitment to make details exactly as you know DevOps actually supports emojis. So that should resolve to a smiley face.
+
+439
+00:46:28.440 --> 00:46:28.710
+Chris Unwin (He/Him): But
+
+440
+00:46:30.840 --> 00:46:35.160
+Chris Unwin (He/Him): That being said, I am committing and pushing directly to master which don't tell anyone.
+
+441
+00:46:36.510 --> 00:46:41.460
+Chris Kerswell: Is your commit message, message smiley face. But you're committing to master.
+
+442
+00:46:41.610 --> 00:46:53.580
+Chris Unwin (He/Him): Yes, I am. Yes. And I, you know, normally I would use change automation to switch to a branch make my changes coming raise a pull request, we don't have time for that we've already been talking for 45 minutes
+
+443
+00:46:54.750 --> 00:46:55.140
+Chris Kerswell: Long
+
+444
+00:46:55.440 --> 00:47:10.830
+Chris Unwin (He/Him): Yes, so I'm jumping back over into as your DevOps and actually what we should see is that we've got the DB ale pipeline now. And that's actually got all of those same files that we had in our local repo because we committed and push them.
+
+445
+00:47:12.450 --> 00:47:20.010
+Chris Unwin (He/Him): And that's just about it. So we've gotten our database into source control, along with one additional table change.
+
+446
+00:47:20.130 --> 00:47:22.590
+Chris Kerswell: And importantly formatted in the way that you
+
+447
+00:47:22.770 --> 00:47:23.700
+Chris Unwin (He/Him): Specify matic
+
+448
+00:47:23.730 --> 00:47:25.770
+Chris Unwin (He/Him): In the way that we agreed upon, as a company,
+
+449
+00:47:27.990 --> 00:47:30.990
+Chris Kerswell: So we've got it up there. What's the next step.
+
+450
+00:47:32.190 --> 00:47:35.340
+Chris Unwin (He/Him): Well, I don't know about you, Chris. But I had no issues with
+
+451
+00:47:36.360 --> 00:47:36.810
+Chris Unwin (He/Him): Anyway,
+
+452
+00:47:39.450 --> 00:47:40.140
+Chris Unwin (He/Him): Getting up there.
+
+453
+00:47:41.280 --> 00:47:45.390
+Chris Unwin (He/Him): So we've gotten our database into source control very, very easily.
+
+454
+00:47:47.040 --> 00:47:50.910
+Chris Unwin (He/Him): jumped over into pipelines and we're now going to build out a new pipeline so
+
+455
+00:47:51.720 --> 00:48:00.450
+Chris Unwin (He/Him): If we jump into pipelines, we get a couple of different options. We're especially with our older version of is your DevOps on this virtual machine, which I'm hosting locally.
+
+456
+00:48:00.990 --> 00:48:10.680
+Chris Unwin (He/Him): So I pick the project and the repository and the default branch for manual and shattered builds, which is of course the master branch. We've got all of the different
+
+457
+00:48:12.300 --> 00:48:14.070
+Chris Unwin (He/Him): Files on there. We've got
+
+458
+00:48:15.330 --> 00:48:25.560
+Chris Unwin (He/Him): Our DB L pipeline and now we get a couple of options do we start with an empty job or do we go with jamo Chris, what do you think
+
+459
+00:48:27.180 --> 00:48:30.270
+Chris Kerswell: I would go with not jamo but
+
+460
+00:48:31.560 --> 00:48:32.850
+Chris Kerswell: You're going to go with the MO.
+
+461
+00:48:33.660 --> 00:48:35.670
+Chris Unwin (He/Him): Mo is spectacular.
+
+462
+00:48:36.240 --> 00:48:37.830
+Chris Unwin (He/Him): Because I'm just saying yes
+
+463
+00:48:38.280 --> 00:48:41.220
+Chris Kerswell: Is it yeah again block reward.
+
+464
+00:48:41.850 --> 00:48:43.140
+Chris Unwin (He/Him): look a lot like this.
+
+465
+00:48:43.620 --> 00:48:46.530
+Chris Unwin (He/Him): All right, we'll go with the empty job for now.
+
+466
+00:48:48.480 --> 00:48:51.150
+Chris Kerswell: Wonder what gamble is we covered on the previous episode.
+
+467
+00:48:51.750 --> 00:48:52.230
+We did.
+
+468
+00:48:53.460 --> 00:49:05.340
+Chris Unwin (He/Him): I'm gonna go with an empty job for now. But just know if you go with gambling, you can actually use as your DevOps to auto generate your Yammer from the plugins, which is effectively just feels like an empty job anyway.
+
+469
+00:49:07.350 --> 00:49:15.450
+Chris Unwin (He/Him): So fortunately, I'm using. So for this particular pipeline. I'm actually going to use the default agent pool.
+
+470
+00:49:15.750 --> 00:49:23.730
+Chris Unwin (He/Him): And the default agent Paul actually just means that I haven't as your DevOps agent present on this machine ready to do the builds and deployments for me.
+
+471
+00:49:24.390 --> 00:49:33.420
+Chris Unwin (He/Him): Now you can build out agent pools and you can add you can add additional agents to those pools by going to the project settings as well.
+
+472
+00:49:34.380 --> 00:49:40.710
+Chris Unwin (He/Him): For each of the projects and I'm just going with my default poll which is an agent on this particular machine.
+
+473
+00:49:41.250 --> 00:49:51.540
+Chris Unwin (He/Him): But for the build you actually need to think about what agent is doing that build what agent has a permission to a local instance of sequel server what agent has the permissions to
+
+474
+00:49:52.050 --> 00:50:03.990
+Chris Unwin (He/Him): run against and as your sequel DB, you can pass in Windows or sequel server author, etc. As part of the building deployment, but it's up to you. Think about permission. Think about why you're doing this.
+
+475
+00:50:06.690 --> 00:50:08.430
+Chris Kerswell: Right, that's Chris
+
+476
+00:50:08.760 --> 00:50:22.590
+Chris Unwin (He/Him): Interesting bits jumping over to agent job one and I'm going to add an agent job now at this point if you don't already install sequel change automation from the DevOps marketplace.
+
+477
+00:50:23.310 --> 00:50:32.130
+Chris Unwin (He/Him): Fortunately, I've already have sequel change automation build present. So we want to build, not the release component
+
+478
+00:50:35.610 --> 00:50:39.210
+Chris Kerswell: Alright, so now we get to the fun bit configuring the bill hold
+
+479
+00:50:39.390 --> 00:50:43.170
+Chris Unwin (He/Him): Yes, so this is going to be fun for anyone listening to the podcast, so
+
+480
+00:50:43.740 --> 00:50:56.940
+Chris Unwin (He/Him): For those of you listening. The first thing we're going to do is we've chosen the operation is to build a sequel change automation project. So because we've got that sequel prod file with all the migrations, etc. In we're going to pick that
+
+481
+00:50:57.990 --> 00:51:08.100
+Chris Unwin (He/Him): And then we're going to locate that sequel approach projects. So the sequel change automation project, you can actually use the ellipses, the three little dots to find the sequel project.
+
+482
+00:51:08.580 --> 00:51:18.060
+Chris Unwin (He/Him): And then when it comes to the output nougat package. We just want to call that something simple, so that we can track it. So we'll go with DB AO doc database.
+
+483
+00:51:20.100 --> 00:51:28.800
+Chris Unwin (He/Him): Now I'm going to build against a sequel server because this is going to be running on a local as your DevOps agent. I'm just going to pick my
+
+484
+00:51:30.210 --> 00:51:42.870
+Chris Unwin (He/Him): AWS instance. And I'm going to leave database blank. And the reason for database being left blank is because when we build change automation will dynamically assign a GUI to the build.
+
+485
+00:51:43.320 --> 00:51:53.730
+Chris Unwin (He/Him): The build database name preventing it from clashing with any existing databases. If you wanted a more persistent database to build against you can specify the name of that database there.
+
+486
+00:51:54.360 --> 00:51:55.650
+Chris Kerswell: Or even a clone.
+
+487
+00:51:56.160 --> 00:51:56.970
+Chris Unwin (He/Him): Or even a climb.
+
+488
+00:51:59.400 --> 00:52:09.630
+Chris Unwin (He/Him): So I've specified windows or specifically for this build. So we're going to authenticate against the local repo using the windows or for the agent.
+
+489
+00:52:10.050 --> 00:52:21.420
+Chris Unwin (He/Him): And then we're saying to publish the artifact. So what that's going to do is make the output new get package that the build produces available to the remaining portion of our pipeline.
+
+490
+00:52:22.260 --> 00:52:22.860
+Chris Kerswell: It's good fun.
+
+491
+00:52:23.700 --> 00:52:31.200
+Chris Unwin (He/Him): The only thing that I do want to make sure that I do is append the build ID to the new get package version so
+
+492
+00:52:31.680 --> 00:52:37.560
+Chris Unwin (He/Him): If you go down to the new get package version in the plugin when we've added the change automation build step.
+
+493
+00:52:37.980 --> 00:52:53.970
+Chris Unwin (He/Him): Is you go to nougat package version and set it to whatever I've gone with one dot zero, the default, but then you can append the build ID to the new get package version so that you can hold historical new get packages. So that's one dot zero dot 101, for instance.
+
+494
+00:52:55.170 --> 00:52:57.000
+Chris Kerswell: Why are we ready to save and
+
+495
+00:52:58.230 --> 00:53:04.440
+Chris Unwin (He/Him): We are ready to save in queue. So let's say saving. Q And then saving Q again. And that's going to trigger the build.
+
+496
+00:53:04.920 --> 00:53:16.200
+Chris Unwin (He/Him): From our repository, and hopefully we can see that my message smiley face has indeed kicked off a build. Now what's going to happen at this point is that change automation is going to kick off so
+
+497
+00:53:16.860 --> 00:53:23.790
+Chris Unwin (He/Him): As your DevOps is going to initialize the job and get the sources is going to check out our get repo.
+
+498
+00:53:24.300 --> 00:53:37.110
+Chris Unwin (He/Him): To a local environment to the agent and local workspace to the agent and then change automation is going to basically if the change automation power shell components aren't already present
+
+499
+00:53:37.680 --> 00:53:43.140
+Chris Unwin (He/Him): Then as your DevOps would call out to the power shell gallery, if possible, and download and make those available.
+
+500
+00:53:44.280 --> 00:54:02.640
+Chris Unwin (He/Him): Now because they are available. It's invoking the database build and invoking the database build is going to validate our project is then going to build the database from scratch. I it's going to run all of the migration scripts from our baseline up to our latest incremental migration.
+
+501
+00:54:04.260 --> 00:54:20.520
+Chris Unwin (He/Him): And then that's it. It's going to say yes, this was a successful build. So I'm going to package up all of the schema all of the migration scripts etc into a new get package, which is as you like to call it the fanciest of zip files.
+
+502
+00:54:21.090 --> 00:54:23.070
+Chris Unwin (He/Him): And make that available to the release stage.
+
+503
+00:54:24.150 --> 00:54:28.740
+Chris Kerswell: Now that's not quite how I term it but basically all the all the components of that.
+
+504
+00:54:29.850 --> 00:54:36.390
+Chris Unwin (He/Him): Exactly. So we've built successfully. We've got our artifacts. Now, what do we have to do.
+
+505
+00:54:36.900 --> 00:54:49.890
+Chris Unwin (He/Him): Release indeed release release. So if I go to new pipeline and as your DevOps pipelines releases. I can then start with another empty job.
+
+506
+00:54:50.550 --> 00:55:02.130
+Chris Unwin (He/Him): And then all I have to do is over by the artifact box. If I add my pipeline my CI pipeline that has just come by default from my get repo.
+
+507
+00:55:02.640 --> 00:55:18.270
+Chris Unwin (He/Him): I've been able to add the artifacts that are published by now. If you click on the little lightning bolt on that you can actually enable the continuous deployment trigger to actually every time we get a new successful new get package. Go ahead and deploy.
+
+508
+00:55:21.000 --> 00:55:28.050
+Chris Unwin (He/Him): You can include additional steps should you wish but we're just going to go with stage zero for now for time saving purposes.
+
+509
+00:55:28.470 --> 00:55:29.730
+Chris Kerswell: Scott Stage one lots
+
+510
+00:55:33.690 --> 00:55:34.320
+Chris Kerswell: Just say
+
+511
+00:55:37.110 --> 00:55:39.960
+Chris Kerswell: I can change the stage name I'm gonna call it a testing. There we go.
+
+512
+00:55:41.520 --> 00:55:55.980
+Chris Kerswell: That's Stage one or stage zero. I'm gonna call it testing because we're going to deploy to testing. So what we need now is the red gate sequel change automation release components. So what you're going to do is you're going to add it is also about coming well
+
+513
+00:55:57.720 --> 00:55:59.220
+Chris Kerswell: So we did the build now.
+
